@@ -52,7 +52,7 @@ export default {
       accounts: {mnemonic: EOA_MNEMONIC},
       gas: 2100000,
       gasPrice: 8000000000,
-      saveDeployments: true,
+      // saveDeployments: true,
       // accounts: [`${TEST_PROTOCOL_OWNER_KEY}`, `${TEST_GF_DEPLOYER_KEY}`],
     },
     mainnet: {
@@ -93,12 +93,12 @@ export default {
   },
   namedAccounts: {
     protocol_owner: {
-      default: 0,
+      default: 4,
       1: "0xc840B3e21FF0EBA77468AD450d868D4362cF67fE",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     gf_deployer: {
-      default: 1,
+      default: 4,
       1: "0xa083880F7a5df37Bf00a25380C3eB9AF9cD92D8f",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
