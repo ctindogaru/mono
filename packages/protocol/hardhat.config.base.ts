@@ -50,8 +50,9 @@ export default {
     rinkeby: {
       url: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_RINKEBY_API_KEY}`,
       accounts: {mnemonic: EOA_MNEMONIC},
-      gas: 2100000,
-      gasPrice: 8000000000,
+      gas: 10000000,
+      // gas: 2100000,
+      // gasPrice: 8000000000,
       // saveDeployments: true,
       // accounts: [`${TEST_PROTOCOL_OWNER_KEY}`, `${TEST_GF_DEPLOYER_KEY}`],
     },
