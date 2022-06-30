@@ -126,7 +126,7 @@ const SAFE_CONFIG: Record<SafeConfigChainId, {safeAddress: AddressString; execut
     executor: "0xf13eFa505444D09E176d83A4dfd50d10E399cFd5",
   },
   [RINKEBY_CHAIN_ID]: {
-    safeAddress: "0x618C20c64cAc5211E099D355ba213790708e7462",
+    safeAddress: "0x408Bb9411f761B3dFf80245Bc8B9a97F9140E80A",
     executor: "0xeF3fAA47e1b0515f640c588a0bc3D268d5aa29B9",
   },
 }
