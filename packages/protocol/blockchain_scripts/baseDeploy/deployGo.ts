@@ -52,9 +52,10 @@ export async function deployGo(
     await getProtocolOwner()
   )
 
-  await deployEffects.add({
-    deferred: [await goldfinchConfig.populateTransaction.setAddress(CONFIG_KEYS.Go, contract.address)],
-  })
+  // await deployEffects.add({
+  //   deferred: [await goldfinchConfig.populateTransaction.setAddress(CONFIG_KEYS.Go, contract.address)],
+  // })
+  await goldfinchConfig.populateTransaction.setAddress(CONFIG_KEYS.Go, contract.address)
 
   return {
     name: contractName,

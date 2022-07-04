@@ -37,11 +37,12 @@ async function grantDistributorRoleToMerkleDistributor(
   }
   const protocolOwner = await getProtocolOwner()
   const communityRewardsEthers = (await toEthers<CommunityRewards>(communityRewards.contract)).connect(protocolOwner)
-  await deployEffects.add({
-    deferred: [
-      await communityRewardsEthers.populateTransaction.grantRole(DISTRIBUTOR_ROLE, merkleDistributor.contract.address),
-    ],
-  })
+  // await deployEffects.add({
+  //   deferred: [
+  //     await communityRewardsEthers.populateTransaction.grantRole(DISTRIBUTOR_ROLE, merkleDistributor.contract.address),
+  //   ],
+  // })
+  await communityRewardsEthers.populateTransaction.grantRole(DISTRIBUTOR_ROLE, merkleDistributor.contract.address)
 }
 
 export async function deployMerkleDistributor(
