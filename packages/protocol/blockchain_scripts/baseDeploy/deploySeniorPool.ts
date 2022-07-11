@@ -31,7 +31,8 @@ export async function deploySeniorPool(deployer: ContractDeployer, {config, fidu
     libraries: {["Accountant"]: accountant.address},
   })
   await updateConfig(config, "address", CONFIG_KEYS.SeniorPool, seniorPool.address, {logger})
-  await (await config.addToGoList(seniorPool.address)).wait()
+  const receipt = await config.addToGoList(seniorPool.address)
+  await receipt.wait()
   if (fidu) {
     logger(`Granting minter role to ${contractName}`)
     await grantMinterRoleToPool(fidu, seniorPool)

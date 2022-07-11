@@ -44,9 +44,10 @@ export async function deployBackerRewards(
   const goldfinchConfig = await getEthersContract<GoldfinchConfig>("GoldfinchConfig", {at: configAddress})
 
   logger("Updating config...")
-  await deployEffects.add({
-    deferred: [await goldfinchConfig.populateTransaction.setAddress(CONFIG_KEYS.BackerRewards, contract.address)],
-  })
+  // await deployEffects.add({
+  //   deferred: [await goldfinchConfig.populateTransaction.setAddress(CONFIG_KEYS.BackerRewards, contract.address)],
+  // })
+  await goldfinchConfig.populateTransaction.setAddress(CONFIG_KEYS.BackerRewards, contract.address)
   logger("Updated BackerRewards config address to:", contract.address)
 
   return contract

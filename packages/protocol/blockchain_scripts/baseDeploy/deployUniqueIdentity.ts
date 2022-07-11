@@ -50,9 +50,10 @@ export async function deployUniqueIdentity({
   >(contractName, TRUFFLE_CONTRACT_PROVIDER, {at: uniqueIdentity.address})
   const ethersContract = (await toEthers<UniqueIdentity>(truffleContract)).connect(await getProtocolOwner())
 
-  await deployEffects.add({
-    deferred: [await ethersContract.populateTransaction.grantRole(SIGNER_ROLE, trustedSigner)],
-  })
+  // await deployEffects.add({
+  //   deferred: [await ethersContract.populateTransaction.grantRole(SIGNER_ROLE, trustedSigner)],
+  // })
+  await ethersContract.populateTransaction.grantRole(SIGNER_ROLE, trustedSigner)
 
   return {
     name: contractName,
