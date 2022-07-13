@@ -28,7 +28,7 @@ if (process.env.HARDHAT_FORK) {
 }
 
 export default {
-  defaultNetwork: "rinkeby",
+  defaultNetwork: "auroratestnet",
   networks: {
     hardhat: {
       mining: {
@@ -51,6 +51,17 @@ export default {
       url: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_RINKEBY_API_KEY}`,
       accounts: {mnemonic: EOA_MNEMONIC},
       gas: 10000000,
+      // gas: 2100000,
+      // gasPrice: 8000000000,
+      // saveDeployments: true,
+      // accounts: [`${TEST_PROTOCOL_OWNER_KEY}`, `${TEST_GF_DEPLOYER_KEY}`],
+    },
+    auroratestnet: {
+      chainId: 1313161555,
+      url: `https://testnet.aurora.dev/`,
+      accounts: {mnemonic: EOA_MNEMONIC},
+      gasPrice: 120 * 1000000000,
+      // gas: 10000000,
       // gas: 2100000,
       // gasPrice: 8000000000,
       // saveDeployments: true,
@@ -94,19 +105,22 @@ export default {
   },
   namedAccounts: {
     protocol_owner: {
-      default: 4,
+      default: 1313161555,
       1: "0xc840B3e21FF0EBA77468AD450d868D4362cF67fE",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
+      1313161555: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     gf_deployer: {
-      default: 4,
+      default: 1313161555,
       1: "0xa083880F7a5df37Bf00a25380C3eB9AF9cD92D8f",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
+      1313161555: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     temp_multisig: {
       1: "0x60d2be34bce277f5f5889adfd4991baefa17461c",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
       31337: "0x60d2be34bce277f5f5889adfd4991baefa17461c",
+      1313161555: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     test_merkle_distributor_recipient_a: {
       hardhat: TEST_MERKLE_DISTRIBUTOR_RECIPIENT_A,
