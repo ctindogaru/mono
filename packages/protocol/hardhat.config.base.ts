@@ -28,7 +28,7 @@ if (process.env.HARDHAT_FORK) {
 }
 
 export default {
-  defaultNetwork: "rinkeby",
+  defaultNetwork: "mumbai",
   networks: {
     hardhat: {
       mining: {
@@ -55,6 +55,11 @@ export default {
       // gasPrice: 8000000000,
       // saveDeployments: true,
       // accounts: [`${TEST_PROTOCOL_OWNER_KEY}`, `${TEST_GF_DEPLOYER_KEY}`],
+    },
+    mumbai: {
+      url: `https://rpc-mumbai.maticvigil.com/`,
+      accounts: {mnemonic: EOA_MNEMONIC},
+      chainId: 80001,
     },
     mainnet: {
       url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
@@ -94,18 +99,21 @@ export default {
   },
   namedAccounts: {
     protocol_owner: {
-      default: 4,
+      default: 80001,
       1: "0xc840B3e21FF0EBA77468AD450d868D4362cF67fE",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
+      80001: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     gf_deployer: {
-      default: 4,
+      default: 80001,
       1: "0xa083880F7a5df37Bf00a25380C3eB9AF9cD92D8f",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
+      80001: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     temp_multisig: {
       1: "0x60d2be34bce277f5f5889adfd4991baefa17461c",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
+      80001: "0x618C20c64cAc5211E099D355ba213790708e7462",
       31337: "0x60d2be34bce277f5f5889adfd4991baefa17461c",
     },
     test_merkle_distributor_recipient_a: {
