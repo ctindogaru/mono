@@ -126,7 +126,7 @@ export async function setUpForTesting(hre: HardhatRuntimeEnvironment, {overrideA
   }
 
   // Grant local signer role
-  await impersonateAccount(hre, protocol_owner)
+  // await impersonateAccount(hre, protocol_owner)
 
   // setup UID supported types for local dev
   if (!isMainnetForking()) {
@@ -150,10 +150,10 @@ export async function setUpForTesting(hre: HardhatRuntimeEnvironment, {overrideA
     )
   }
 
-  await impersonateAccount(hre, protocol_owner)
+  // await impersonateAccount(hre, protocol_owner)
   await setupTestForwarder(deployer, config, getOrNull, protocol_owner)
 
-  let seniorPool: SeniorPool = await getDeployedAsEthersContract<SeniorPool>(getOrNull, "SeniorPool")
+  const seniorPool: SeniorPool = await getDeployedAsEthersContract<SeniorPool>(getOrNull, "SeniorPool")
   let go = await getDeployedAsEthersContract<Go>(getOrNull, "Go")
   const goldfinchConfig = await getEthersContract<GoldfinchConfig>("GoldfinchConfig")
   if (!isMainnetForking()) {
@@ -219,27 +219,28 @@ export async function setUpForTesting(hre: HardhatRuntimeEnvironment, {overrideA
     await fundAddressAndDepositToCommonPool({erc20, depositorAddress: borrower, commonPool, seniorPool})
 
     // Have the senior fund invest
-    seniorPool = seniorPool.connect(protocolOwnerSigner)
-    const txn = await commonPool.lockJuniorCapital()
-    await txn.wait()
-    await seniorPool.invest(commonPool.address)
-    const filter = commonPool.filters.DepositMade(seniorPool.address)
-    const depositLog = (await ethers.provider.getLogs(filter))[0]
-    assertNonNullable(depositLog)
-    const depositEvent = commonPool.interface.parseLog(depositLog)
-    const tokenId = depositEvent.args.tokenId
+    // seniorPool = seniorPool.connect(protocolOwnerSigner)
+    // const txn = await commonPool.lockJuniorCapital()
+    // await txn.wait()
+    // await seniorPool.invest(commonPool.address)
+    // const filter = commonPool.filters.DepositMade(seniorPool.address)
+    // const depositLog = (await ethers.provider.getLogs(filter))[0]
+    // assertNonNullable(depositLog)
+    // const depositEvent = commonPool.interface.parseLog(depositLog)
+    // const tokenId = depositEvent.args.tokenId
 
     await commonPool.lockPool()
-    let creditLine = await getDeployedAsEthersContract<CreditLine>(getOrNull, "CreditLine")
-    creditLine = creditLine.attach(await commonPool.creditLine())
+    // let creditLine = await getDeployedAsEthersContract<CreditLine>(getOrNull, "CreditLine")
+    // creditLine = creditLine.attach(await commonPool.creditLine())
 
-    const amount = (await creditLine.limit()).div(2)
-    await commonPool.drawdown(amount)
+    // const amount = (await creditLine.limit()).div(2)
+    // await commonPool.drawdown(amount)
+    await commonPool.drawdown(1000)
 
-    await advanceTime({days: 32})
+    // await advanceTime({days: 32})
 
     // Have the borrower repay a portion of their loan
-    await impersonateAccount(hre, protocol_owner)
+    // await impersonateAccount(hre, protocol_owner)
     const borrowerSigner = ethers.provider.getSigner(protocol_owner)
     assertNonNullable(borrowerSigner)
     const bwrCon = (await ethers.getContractAt("Borrower", protocolBorrowerCon)).connect(borrowerSigner) as Borrower
@@ -247,11 +248,11 @@ export async function setUpForTesting(hre: HardhatRuntimeEnvironment, {overrideA
     await (erc20 as TestERC20).connect(borrowerSigner).approve(bwrCon.address, payAmount.mul(new BN(2)).toString())
     await bwrCon.pay(commonPool.address, payAmount.toString())
 
-    await advanceTime({days: 32})
+    // await advanceTime({days: 32})
 
     await bwrCon.pay(commonPool.address, payAmount.toString())
 
-    await seniorPool.redeem(tokenId)
+    // await seniorPool.redeem(tokenId)
   }
 }
 
@@ -361,11 +362,11 @@ async function fundAddressAndDepositToCommonPool({
 }): Promise<void> {
   logger(`Deposit into senior fund address:${depositorAddress}`)
   // fund with address into sr fund
-  await impersonateAccount(hre, depositorAddress)
+  // await impersonateAccount(hre, depositorAddress)
   const signer = ethers.provider.getSigner(depositorAddress)
   const depositAmount = new BN(10000).mul(USDCDecimals)
-  await (erc20 as TestERC20).connect(signer).approve(seniorPool.address, depositAmount.mul(new BN(5)).toString())
-  await seniorPool.connect(signer).deposit(depositAmount.mul(new BN(5)).toString())
+  // await (erc20 as TestERC20).connect(signer).approve(seniorPool.address, depositAmount.mul(new BN(5)).toString())
+  // await seniorPool.connect(signer).deposit(depositAmount.mul(new BN(5)).toString())
 
   // Deposit funds into Common Pool
   let txn = await erc20.connect(signer).approve(commonPool.address, String(depositAmount))
@@ -414,7 +415,7 @@ async function createBorrowerContractAndPools({
   let filledPoolTxn = await filledPool.lockJuniorCapital()
   await filledPoolTxn.wait()
   const ownerSigner = ethers.provider.getSigner(protocol_owner)
-  await seniorPool.connect(ownerSigner).invest(filledPool.address)
+  // await seniorPool.connect(ownerSigner).invest(filledPool.address)
 
   filledPoolTxn = await filledPool.lockPool()
   await filledPoolTxn.wait()
@@ -606,11 +607,11 @@ async function createPoolForBorrower({
 }): Promise<TranchedPool> {
   const juniorFeePercent = String(new BN(20))
   const limit = String(new BN(10000).mul(USDCDecimals))
-  const interestApr = String(interestAprAsBN("5.00"))
-  const paymentPeriodInDays = String(new BN(30))
-  const termInDays = String(new BN(360))
+  const interestApr = String(interestAprAsBN("0.00"))
+  const paymentPeriodInDays = String(new BN(0))
+  const termInDays = String(new BN(36000))
   const lateFeeApr = String(new BN(0))
-  const principalGracePeriodInDays = String(new BN(185))
+  const principalGracePeriodInDays = String(new BN(36000))
   const fundableAt = String(new BN(0))
   const underwriterSigner = ethers.provider.getSigner(underwriter)
   const result = await (
