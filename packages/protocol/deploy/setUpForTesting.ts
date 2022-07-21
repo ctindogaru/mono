@@ -3,7 +3,7 @@ import {MAINNET_CHAIN_ID} from "../blockchain_scripts/deployHelpers"
 import {setUpForTesting} from "../blockchain_scripts/setUpForTesting"
 
 async function main(hre) {
-  // await setUpForTesting(hre)
+  await setUpForTesting(hre)
 }
 
 module.exports = main
