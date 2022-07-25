@@ -97,6 +97,7 @@ export default {
   },
   mocha: {
     reporter: "list",
+    timeout: 100000000,
   },
   namedAccounts: {
     protocol_owner: {
