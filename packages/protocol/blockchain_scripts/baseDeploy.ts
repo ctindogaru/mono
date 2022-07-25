@@ -62,7 +62,10 @@ const baseDeploy: DeployFunction = async function (hre: HardhatRuntimeEnvironmen
   await deployTransferRestrictedVault(deployer, {config})
   const pool = await deployPool(deployer, {config})
   await deployTranchedPool(deployer, {config, deployEffects})
+  logger("Granting minter role to Pool")
+  await grantMinterRoleToPool(fidu, pool)
   const creditDesk = await deployCreditDesk(deployer, {config})
+  await deploySeniorPool(deployer, {config, fidu})
   await deployBorrower(deployer, {config})
   await deploySeniorPoolStrategies(deployer, {config})
   logger("Deploying GoldfinchFactory")
@@ -98,11 +101,6 @@ const baseDeploy: DeployFunction = async function (hre: HardhatRuntimeEnvironmen
 
   logger("Granting ownership of Pool to CreditDesk")
   await grantOwnershipOfPoolToCreditDesk(pool, creditDesk.address)
-
-  logger("Granting minter role to Pool")
-  await grantMinterRoleToPool(fidu, pool)
-
-  await deploySeniorPool(deployer, {config, fidu})
 
   // await deployEffects.executeDeferred()
 }
