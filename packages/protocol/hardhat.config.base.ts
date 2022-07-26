@@ -68,6 +68,12 @@ export default {
       chainId: 80001,
       // gasPrice: 120 * 1000000000
     },
+    fuji: {
+      url: "https://api.avax-test.network/ext/bc/C/rpc",
+      accounts: {mnemonic: EOA_MNEMONIC},
+      chainId: 43113,
+      // gasPrice: 120 * 1000000000
+    },
     mainnet: {
       url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
       // Uncomment when you actually want to run mainnet. Hardhat freaks out otherwise because the private keys are undefined in the default case
@@ -112,6 +118,7 @@ export default {
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
       1313161555: "0x618C20c64cAc5211E099D355ba213790708e7462",
       80001: "0x618C20c64cAc5211E099D355ba213790708e7462",
+      43113: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     gf_deployer: {
       default: 1313161555,
@@ -119,6 +126,7 @@ export default {
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
       1313161555: "0x618C20c64cAc5211E099D355ba213790708e7462",
       80001: "0x618C20c64cAc5211E099D355ba213790708e7462",
+      43113: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     temp_multisig: {
       1: "0x60d2be34bce277f5f5889adfd4991baefa17461c",
@@ -126,6 +134,7 @@ export default {
       31337: "0x60d2be34bce277f5f5889adfd4991baefa17461c",
       1313161555: "0x618C20c64cAc5211E099D355ba213790708e7462",
       80001: "0x618C20c64cAc5211E099D355ba213790708e7462",
+      43113: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     test_merkle_distributor_recipient_a: {
       hardhat: TEST_MERKLE_DISTRIBUTOR_RECIPIENT_A,
