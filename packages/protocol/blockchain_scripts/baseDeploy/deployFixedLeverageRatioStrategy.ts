@@ -32,7 +32,8 @@ export async function deployFixedLeverageRatioStrategy(
       deferred: [await config.populateTransaction.setSeniorPoolStrategy(strategy.address)],
     })
   } else {
-    await config.setSeniorPoolStrategy(strategy.address)
+    console.log("entered here")
+    await config.populateTransaction.setSeniorPoolStrategy(strategy.address)
   }
 
   return strategy
