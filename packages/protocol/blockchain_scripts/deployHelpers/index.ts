@@ -53,9 +53,16 @@ const LOCAL = "localhost"
 const ROPSTEN = "ropsten"
 const RINKEBY = "rinkeby"
 const TESTNET_AURORA = "testnet_aurora"
+const MUMBAI = "mumbai"
 const MAINNET = "mainnet"
 
-export type ChainName = typeof LOCAL | typeof ROPSTEN | typeof RINKEBY | typeof MAINNET | typeof TESTNET_AURORA
+export type ChainName =
+  | typeof LOCAL
+  | typeof ROPSTEN
+  | typeof RINKEBY
+  | typeof MAINNET
+  | typeof TESTNET_AURORA
+  | typeof MUMBAI
 
 const MAX_UINT = new BN("115792089237316195423570985008687907853269984665640564039457584007913129639935")
 
@@ -69,15 +76,24 @@ const RINKEBY_CHAIN_ID = "4"
 type RinkebyChainId = typeof RINKEBY_CHAIN_ID
 const TESTNET_AURORA_CHAIN_ID = "1313161555"
 type TestnetAuroraChainId = typeof TESTNET_AURORA_CHAIN_ID
+const MUMBAI_CHAIN_ID = "80001"
+type MumbaiChainId = typeof MUMBAI_CHAIN_ID
 
-export type ChainId = LocalChainId | RopstenChainId | MainnetChainId | RinkebyChainId | TestnetAuroraChainId
+export type ChainId =
+  | LocalChainId
+  | RopstenChainId
+  | MainnetChainId
+  | RinkebyChainId
+  | TestnetAuroraChainId
+  | MumbaiChainId
 
 const CHAIN_IDS = genExhaustiveTuple<ChainId>()(
   LOCAL_CHAIN_ID,
   ROPSTEN_CHAIN_ID,
   MAINNET_CHAIN_ID,
   RINKEBY_CHAIN_ID,
-  TESTNET_AURORA_CHAIN_ID
+  TESTNET_AURORA_CHAIN_ID,
+  MUMBAI_CHAIN_ID
 )
 export const assertIsChainId: (val: unknown) => asserts val is ChainId = (val: unknown): asserts val is ChainId => {
   if (!(CHAIN_IDS as unknown[]).includes(val)) {
@@ -91,6 +107,7 @@ const CHAIN_NAME_BY_ID: Record<ChainId, ChainName> = {
   [MAINNET_CHAIN_ID]: MAINNET,
   [RINKEBY_CHAIN_ID]: RINKEBY,
   [TESTNET_AURORA_CHAIN_ID]: TESTNET_AURORA,
+  [MUMBAI_CHAIN_ID]: MUMBAI,
 }
 
 export type AddressString = string
@@ -125,11 +142,12 @@ const ERC20_ADDRESSES = {
   [BUSD]: BUSD_ADDRESSES,
 }
 
-type SafeConfigChainId = MainnetChainId | RinkebyChainId | TestnetAuroraChainId
+type SafeConfigChainId = MainnetChainId | RinkebyChainId | TestnetAuroraChainId | MumbaiChainId
 const SAFE_CONFIG_CHAIN_IDS = genExhaustiveTuple<SafeConfigChainId>()(
   MAINNET_CHAIN_ID,
   RINKEBY_CHAIN_ID,
-  TESTNET_AURORA_CHAIN_ID
+  TESTNET_AURORA_CHAIN_ID,
+  MUMBAI_CHAIN_ID
 )
 export const isSafeConfigChainId = (val: unknown): val is SafeConfigChainId =>
   (SAFE_CONFIG_CHAIN_IDS as unknown[]).includes(val)
@@ -144,6 +162,10 @@ const SAFE_CONFIG: Record<SafeConfigChainId, {safeAddress: AddressString; execut
     executor: "0xeF3fAA47e1b0515f640c588a0bc3D268d5aa29B9",
   },
   [TESTNET_AURORA_CHAIN_ID]: {
+    safeAddress: "0x618C20c64cAc5211E099D355ba213790708e7462",
+    executor: "0xeF3fAA47e1b0515f640c588a0bc3D268d5aa29B9",
+  },
+  [MUMBAI_CHAIN_ID]: {
     safeAddress: "0x618C20c64cAc5211E099D355ba213790708e7462",
     executor: "0xeF3fAA47e1b0515f640c588a0bc3D268d5aa29B9",
   },
