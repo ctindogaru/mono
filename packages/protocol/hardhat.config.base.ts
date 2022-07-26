@@ -28,7 +28,7 @@ if (process.env.HARDHAT_FORK) {
 }
 
 export default {
-  defaultNetwork: "testnet_aurora",
+  defaultNetwork: "fuji",
   networks: {
     hardhat: {
       mining: {
@@ -71,6 +71,7 @@ export default {
     fuji: {
       url: "https://api.avax-test.network/ext/bc/C/rpc",
       accounts: {mnemonic: EOA_MNEMONIC},
+      gasPrice: 225000000000,
       chainId: 43113,
       // gasPrice: 120 * 1000000000
     },
@@ -113,7 +114,7 @@ export default {
   },
   namedAccounts: {
     protocol_owner: {
-      default: 1313161555,
+      default: 43113,
       1: "0xc840B3e21FF0EBA77468AD450d868D4362cF67fE",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
       1313161555: "0x618C20c64cAc5211E099D355ba213790708e7462",
@@ -121,7 +122,7 @@ export default {
       43113: "0x618C20c64cAc5211E099D355ba213790708e7462",
     },
     gf_deployer: {
-      default: 1313161555,
+      default: 43113,
       1: "0xa083880F7a5df37Bf00a25380C3eB9AF9cD92D8f",
       4: "0x618C20c64cAc5211E099D355ba213790708e7462",
       1313161555: "0x618C20c64cAc5211E099D355ba213790708e7462",
