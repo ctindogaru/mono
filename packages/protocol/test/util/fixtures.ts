@@ -451,3 +451,55 @@ export const deployFundedTranchedPool = createFixtureWithRequiredOptions(
     }
   }
 )
+
+export const deployFlexibleFundedTranchedPool = createFixtureWithRequiredOptions(
+  async (
+    hre,
+    {
+      seniorTrancheAmount = usdcVal(8_000),
+      juniorTrancheAmount = usdcVal(2_000),
+      usdcAddress,
+      borrower,
+      borrowerContractAddress,
+      id,
+    }: {
+      usdcAddress: string
+      borrower: string
+      borrowerContractAddress: string
+      seniorTrancheAmount?: BN
+      juniorTrancheAmount?: BN
+      id: string
+    }
+  ) => {
+    const {protocol_owner: owner} = await hre.getNamedAccounts()
+    assertNonNullable(owner)
+    const {tranchedPool, creditLine} = await deployTranchedPoolWithGoldfinchFactoryFixture({
+      borrower: borrowerContractAddress,
+      interestApr: interestAprAsBN("1000.00"),
+      paymentPeriodInDays: new BN(1),
+      termInDays: new BN(36500),
+      lateFeeApr: new BN(0),
+      principalGracePeriodInDays: new BN(36500),
+      usdcAddress,
+      id,
+    })
+
+    const borrowerContract = await getTruffleContract<BorrowerInstance>("Borrower", {at: borrowerContractAddress})
+    const usdc = await getTruffleContract<ERC20Instance>("ERC20", {at: usdcAddress})
+
+    await erc20Approve(usdc, tranchedPool.address, MAX_UINT, [owner])
+
+    const seniorRole = await tranchedPool.SENIOR_ROLE()
+    await tranchedPool.grantRole(seniorRole, owner)
+    await tranchedPool.deposit(TRANCHES.Junior, juniorTrancheAmount)
+    await borrowerContract.lockJuniorCapital(tranchedPool.address, {from: borrower})
+    await tranchedPool.deposit(TRANCHES.Senior, seniorTrancheAmount)
+    await borrowerContract.lockPool(tranchedPool.address, {from: borrower})
+    await tranchedPool.revokeRole(seniorRole, owner) // clean up
+
+    return {
+      tranchedPool,
+      creditLine,
+    }
+  }
+)
