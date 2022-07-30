@@ -24,7 +24,7 @@ import {
 import {BorrowerInstance, CreditLineInstance, ERC20Instance, TranchedPoolInstance} from "../typechain/truffle"
 import {assertNonNullable} from "packages/utils/src/type"
 
-describe("Borrower", async () => {
+describe("FlexibleBorrower", async () => {
   let owner,
     borrower: string,
     borrowerContract: BorrowerInstance,
