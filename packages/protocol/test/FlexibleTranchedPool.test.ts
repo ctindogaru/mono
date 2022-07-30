@@ -97,10 +97,10 @@ describe("FlexibleTranchedPool", () => {
     gfi: GFIInstance,
     seniorPool: SeniorPoolInstance
   const limit = usdcVal(1000)
-  let interestApr = interestAprAsBN("5.00")
-  const paymentPeriodInDays = new BN(30)
-  let termInDays = new BN(365)
-  const principalGracePeriodInDays = new BN(185)
+  let interestApr = interestAprAsBN("200.00")
+  const paymentPeriodInDays = new BN(1)
+  let termInDays = new BN(36500)
+  const principalGracePeriodInDays = new BN(36000)
   const fundableAt = new BN(0)
   const lateFeeApr = new BN(0)
   const juniorFeePercent = new BN(20)
@@ -693,10 +693,10 @@ describe("FlexibleTranchedPool", () => {
 
       const receipt = await tranchedPool.pay(payAmount, {from: borrower})
       expectPaymentRelatedEventsEmitted(receipt, borrower, tranchedPool, {
-        interest: usdcVal(50),
-        principal: usdcVal(1000),
+        interest: usdcVal(1050),
+        principal: usdcVal(0),
         remaining: new BN(0),
-        reserve: usdcVal(5),
+        reserve: usdcVal(105),
       })
 
       // Total amount owed to junior:
@@ -706,8 +706,8 @@ describe("FlexibleTranchedPool", () => {
       // Amount owed to one of the junior investors:
       //   1045 / 2 = 522.5
       ;({0: interestRedeemable, 1: principalRedeemable} = await tranchedPool.availableToWithdraw(tokenId))
-      expect(interestRedeemable).to.bignumber.equal(usdcVal(2250).div(new BN(100)))
-      expect(principalRedeemable).to.bignumber.equal(usdcVal(500))
+      expect(interestRedeemable).to.bignumber.equal(usdcVal(47250).div(new BN(100)))
+      expect(principalRedeemable).to.bignumber.equal(usdcVal(0))
     })
   })
 
