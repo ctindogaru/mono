@@ -853,10 +853,10 @@ describe("FlexibleTranchedPool", () => {
 
         const receipt = await tranchedPool.pay(payAmount, {from: borrower})
         expectPaymentRelatedEventsEmitted(receipt, borrower, tranchedPool, {
-          interest: usdcVal(50),
-          principal: usdcVal(1000),
+          interest: usdcVal(1050),
+          principal: usdcVal(0),
           remaining: new BN(0),
-          reserve: usdcVal(5),
+          reserve: usdcVal(105),
         })
 
         // Total amount owed to junior:
@@ -865,14 +865,14 @@ describe("FlexibleTranchedPool", () => {
         //   1000 + interest_accrued - protocol_fee = 1045
         // Amount owed to one of the junior investors:
         //   1045 / 2 = 522.5
-        await expectAction(async () => tranchedPool.withdraw(tokenId, usdcVal(52250).div(new BN(100)))).toChange([
-          [async () => await getBalance(owner, usdc), {by: usdcVal(52250).div(new BN(100))}],
+        await expectAction(async () => tranchedPool.withdraw(tokenId, usdcVal(47250).div(new BN(100)))).toChange([
+          [async () => await getBalance(owner, usdc), {by: usdcVal(47250).div(new BN(100))}],
         ])
         const tokenInfo = await poolTokens.getTokenInfo(tokenId)
         expect(tokenInfo.principalAmount).to.bignumber.eq(usdcVal(500))
         // After lock, principalRedeemed is incremented on withdraw
-        expect(tokenInfo.principalRedeemed).to.bignumber.eq(usdcVal(500))
-        expect(tokenInfo.interestRedeemed).to.bignumber.eq(usdcVal(225).div(new BN(10)))
+        expect(tokenInfo.principalRedeemed).to.bignumber.eq(usdcVal(0))
+        expect(tokenInfo.interestRedeemed).to.bignumber.eq(usdcVal(4725).div(new BN(10)))
 
         // After withdrawing the max, the junior investor should not be able to withdraw more
         await expect(tranchedPool.withdraw(tokenId, usdcVal(10))).to.be.rejectedWith(/Invalid redeem amount/)
@@ -893,10 +893,10 @@ describe("FlexibleTranchedPool", () => {
 
         const receipt = await tranchedPool.pay(payAmount, {from: borrower})
         expectPaymentRelatedEventsEmitted(receipt, borrower, tranchedPool, {
-          interest: usdcVal(50),
-          principal: usdcVal(1000),
+          interest: usdcVal(1050),
+          principal: usdcVal(0),
           remaining: new BN(0),
-          reserve: usdcVal(5),
+          reserve: usdcVal(105),
         })
 
         // Total amount owed to junior:
@@ -904,13 +904,13 @@ describe("FlexibleTranchedPool", () => {
         //   interest_accrued = 1000 * 0.05 = 50
         //   protocol_fee = interest_accrued * 0.1 = 5
         //   principal + interest_accrued - protocol_fee = 1045
-        const txn = await tranchedPool.withdraw(tokenId, usdcVal(1045))
+        const txn = await tranchedPool.withdraw(tokenId, usdcVal(945))
         expectEvent(txn, "WithdrawalMade", {
           owner: owner,
           tranche: new BN(TRANCHES.Junior),
           tokenId: tokenId,
-          interestWithdrawn: usdcVal(45),
-          principalWithdrawn: usdcVal(1000),
+          interestWithdrawn: usdcVal(945),
+          principalWithdrawn: usdcVal(0),
         })
       })
     })
