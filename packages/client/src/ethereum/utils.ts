@@ -30,11 +30,13 @@ const MAX_UINT = new BN("1157920892373161954235709850086879078532699846656405640
 const ONE_QUADRILLION_USDC = "1000000000000000000000"
 const MAINNET = "mainnet"
 const ROPSTEN = "ropsten"
+const FUJI = "fuji"
 export const RINKEBY = "rinkeby"
 const LOCAL = "localhost"
 const MAINNET_LAUNCH_BLOCK = "11370658"
 const USDC_ADDRESSES = {
   [ROPSTEN]: "0x07865c6e87b9f70255377e024ace6630c1eaa37f",
+  [FUJI]: "0x62D1290B8aa03d771b27dBfE253E02558358B84B",
   [MAINNET]: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
 }
 
@@ -68,18 +70,21 @@ const mapNetworkToID: Record<string, string> = {
   ropsten: ROPSTEN,
   private: "localhost",
   rinkeby: RINKEBY,
+  fuji: FUJI,
 }
 
 const chainIdToNetworkID = {
   1: MAINNET,
   4: RINKEBY,
   31337: "localhost",
+  43113: FUJI,
 }
 
 const SUPPORTED_NETWORKS: Record<string, boolean> = {
   [MAINNET]: true,
   [LOCAL]: true,
   [RINKEBY]: true,
+  [FUJI]: true,
 }
 
 enum SupportedChainId {
@@ -87,6 +92,7 @@ enum SupportedChainId {
   ROPSTEN = 3,
   LOCAL = 31337,
   MURMURATION = 31337,
+  FUJI = 43113,
 }
 
 const MURMURATION_RPC_URL = "https://murmuration.goldfinch.finance/_chain"

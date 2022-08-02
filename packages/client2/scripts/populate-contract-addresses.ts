@@ -11,6 +11,7 @@ const localDeployments = JSON.parse(
     .toString()
 );
 const localContracts = localDeployments["31337"].localhost.contracts;
+const fujiContracts = localDeployments["43113"].fuji.contracts;
 const mainnetDeployments = JSON.parse(
   fs
     .readFileSync(
@@ -28,6 +29,10 @@ const mainnetContracts = mainnetDeployments["1"].mainnet.contracts;
   {
     relativePath: "../constants/contract-addresses/mainnet.json",
     contracts: mainnetContracts,
+  },
+  {
+    relativePath: "../constants/contract-addresses/fuji.json",
+    contracts: fujiContracts,
   },
 ].forEach(({ relativePath, contracts }) => {
   const addresses = {

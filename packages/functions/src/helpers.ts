@@ -46,7 +46,7 @@ export const originAllowed = (allowedOrigins: string[], origin: string): boolean
  * one to use by default in servicing the request.
  */
 const defaultBlockchainIdentifierByOrigin: {[origin: string]: string | number} = {
-  "http://localhost:3000": "http://localhost:8545",
+  "http://localhost:3000": 43113,
   "https://murmuration.goldfinch.finance": "https://murmuration.goldfinch.finance/_chain",
   "https://app.goldfinch.finance": 1,
 }

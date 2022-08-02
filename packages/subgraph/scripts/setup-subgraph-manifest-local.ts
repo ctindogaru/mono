@@ -10,17 +10,17 @@ const devDeployments = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "../../protocol/deployments/all_dev.json")).toString()
 )
 
-const localhostContracts = devDeployments["31337"].localhost.contracts
-const deployedSeniorPoolProxyAddress = localhostContracts.SeniorPool_Proxy.address
-const deployedGoldfinchFactoryProxyAddress = localhostContracts.GoldfinchFactory_Proxy.address
-const deployedPoolProxyAddress = localhostContracts.Pool_Proxy.address
-const deployedPoolTokensProxyAddress = localhostContracts.PoolTokens_Proxy.address
-const deployedGoldfinchConfigAddress = localhostContracts.GoldfinchConfig.address
-const deployedFiduAddress = localhostContracts.Fidu.address
-const deployedGfiAddress = localhostContracts.GFI.address
-const deployedStakingRewardsProxyAddress = localhostContracts.StakingRewards_Proxy.address
-const deployedBackerRewardsProxyAddress = localhostContracts.BackerRewards_Proxy.address
-const deployedOldFixedLeverageRatioStrategyAddress = localhostContracts.FixedLeverageRatioStrategy.address
+const fujiContracts = devDeployments["43113"].localhost.contracts
+const deployedSeniorPoolProxyAddress = fujiContracts.SeniorPool_Proxy.address
+const deployedGoldfinchFactoryProxyAddress = fujiContracts.GoldfinchFactory_Proxy.address
+const deployedPoolProxyAddress = fujiContracts.Pool_Proxy.address
+const deployedPoolTokensProxyAddress = fujiContracts.PoolTokens_Proxy.address
+const deployedGoldfinchConfigAddress = fujiContracts.GoldfinchConfig.address
+const deployedFiduAddress = fujiContracts.Fidu.address
+const deployedGfiAddress = fujiContracts.GFI.address
+const deployedStakingRewardsProxyAddress = fujiContracts.StakingRewards_Proxy.address
+const deployedBackerRewardsProxyAddress = fujiContracts.BackerRewards_Proxy.address
+const deployedOldFixedLeverageRatioStrategyAddress = fujiContracts.FixedLeverageRatioStrategy.address
 
 const subgraphManifest: any = yaml.load(fs.readFileSync(path.resolve(".", "subgraph.yaml")).toString())
 
