@@ -68,7 +68,7 @@ const ONE_INCH_ADDRESSES = {
 const mapNetworkToID: Record<string, string> = {
   main: MAINNET,
   ropsten: ROPSTEN,
-  private: "localhost",
+  private: FUJI,
   rinkeby: RINKEBY,
   fuji: FUJI,
 }
