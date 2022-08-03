@@ -33,9 +33,7 @@ export class MerkleDistributor {
   }
 
   async initialize(currentBlock: BlockInfo): Promise<void> {
-    const communityRewardsAddress = await this.contract.readOnly.methods
-      .communityRewards()
-      .call(undefined, currentBlock.number)
+    const communityRewardsAddress = await this.contract.readOnly.methods.communityRewards().call(undefined, "latest")
     if (communityRewardsAddress !== this.goldfinchProtocol.getAddress("CommunityRewards")) {
       throw new Error(
         "MerkleDistributor community rewards address doesn't match with deployed CommunityRewards address"

@@ -195,7 +195,7 @@ class TranchedPool {
   }
 
   async initialize(currentBlock: BlockInfo) {
-    this.creditLineAddress = await this.contract.readOnly.methods.creditLine().call(undefined, currentBlock.number)
+    this.creditLineAddress = await this.contract.readOnly.methods.creditLine().call(undefined, "latest")
     this.creditLine = new CreditLine(this.creditLineAddress, this.goldfinchProtocol)
     await this.creditLine.initialize(currentBlock)
     this.metadata = await this.loadPoolMetadata()
@@ -203,27 +203,25 @@ class TranchedPool {
 
     let juniorTranche = await this.contract.readOnly.methods
       .getTranche(TRANCHES.Junior)
-      .call(undefined, currentBlock.number)
+      .call(undefined, "latest")
       .then(trancheInfo)
     let seniorTranche = await this.contract.readOnly.methods
       .getTranche(TRANCHES.Senior)
-      .call(undefined, currentBlock.number)
+      .call(undefined, "latest")
       .then(trancheInfo)
     this.juniorTranche = juniorTranche
     this.seniorTranche = seniorTranche
 
     this.totalDeposited = juniorTranche.principalDeposited.plus(seniorTranche.principalDeposited)
     this.juniorFeePercent = new BigNumber(
-      await this.contract.readOnly.methods.juniorFeePercent().call(undefined, currentBlock.number)
+      await this.contract.readOnly.methods.juniorFeePercent().call(undefined, "latest")
     )
     this.reserveFeePercent = new BigNumber(100).div(
       await this.goldfinchProtocol.getConfigNumber(CONFIG_KEYS.ReserveDenominator, currentBlock)
     )
     let pool = this.goldfinchProtocol.getContract<SeniorPoolContract>("SeniorPool")
     if (this.isMultipleDrawdownsCompatible) {
-      const estimateInvestment = await pool.readOnly.methods
-        .estimateInvestment(this.address)
-        .call(undefined, currentBlock.number)
+      const estimateInvestment = await pool.readOnly.methods.estimateInvestment(this.address).call(undefined, "latest")
       this.estimatedSeniorPoolContribution = new BigNumber(estimateInvestment)
     } else {
       const oldFixedLeverageRatioAddress = "0x9b2ACD3fd9aa6c60B26CF748bfFF682f27893320"
@@ -234,7 +232,7 @@ class TranchedPool {
       this.estimatedSeniorPoolContribution = new BigNumber(
         await oldFixedLeverageRatioContract.readOnly.methods
           .estimateInvestment(pool.readOnly.options.address, this.address)
-          .call(undefined, currentBlock.number)
+          .call(undefined, "latest")
       )
     }
 
@@ -243,15 +241,15 @@ class TranchedPool {
 
     this.isV1StyleDeal = !!this.metadata?.v1StyleDeal
     this.isMigrated = !!this.metadata?.migrated
-    this.isPaused = await this.contract.readOnly.methods.paused().call(undefined, currentBlock.number)
-    this.drawdownsPaused = await this.contract.readOnly.methods.drawdownsPaused().call(undefined, currentBlock.number)
+    this.isPaused = await this.contract.readOnly.methods.paused().call(undefined, "latest")
+    this.drawdownsPaused = await this.contract.readOnly.methods.drawdownsPaused().call(undefined, "latest")
 
     const [totalDeployed, fundableAt, numTranchesPerSlice] = await Promise.all(
       this.isMultipleDrawdownsCompatible
         ? [
-            this.contract.readOnly.methods.totalDeployed().call(undefined, currentBlock.number),
-            this.contract.readOnly.methods.fundableAt().call(undefined, currentBlock.number),
-            this.contract.readOnly.methods.NUM_TRANCHES_PER_SLICE().call(undefined, currentBlock.number),
+            this.contract.readOnly.methods.totalDeployed().call(undefined, "latest"),
+            this.contract.readOnly.methods.fundableAt().call(undefined, "latest"),
+            this.contract.readOnly.methods.NUM_TRANCHES_PER_SLICE().call(undefined, "latest"),
           ]
         : ["0", "0", "2"]
     ).catch((error) => {
@@ -359,7 +357,7 @@ class TranchedPool {
       return this.metadata.allowedUIDTypes
     } else {
       try {
-        const result = await this.contract.readOnly.methods.getAllowedUIDTypes().call(undefined, currentBlock.number)
+        const result = await this.contract.readOnly.methods.getAllowedUIDTypes().call(undefined, "latest")
         return result.map((x) => parseInt(x))
       } catch (e) {
         console.error("getAllowedUIDTypes function does not exist on TranchedPool", e)
@@ -516,7 +514,7 @@ class TranchedPool {
       nextRepaymentTimeAlreadyBorrowed = this.creditLine.nextDueTime
 
       const lastAccrualTimestamp = new BigNumber(
-        await this.creditLine.creditLine.readOnly.methods.interestAccruedAsOf().call(undefined, currentBlock.number)
+        await this.creditLine.creditLine.readOnly.methods.interestAccruedAsOf().call(undefined, "latest")
       )
       const interestAccruingSecondsRemaining = this.creditLine.termEndTime.minus(lastAccrualTimestamp)
       const totalInterestPerYear = this.creditLine.balance
@@ -760,7 +758,7 @@ class TranchedPoolBacker {
     this.tokenInfos = address
       ? await poolTokensContract.readOnly.methods
           .balanceOf(address)
-          .call(undefined, currentBlock.number)
+          .call(undefined, "latest")
           .then((balance: string) => {
             const numTokens = parseInt(balance, 10)
             return numTokens
@@ -770,9 +768,7 @@ class TranchedPoolBacker {
               Array(numTokens)
                 .fill("")
                 .map((val, i) =>
-                  poolTokensContract.readOnly.methods
-                    .tokenOfOwnerByIndex(address, i)
-                    .call(undefined, currentBlock.number)
+                  poolTokensContract.readOnly.methods.tokenOfOwnerByIndex(address, i).call(undefined, "latest")
                 )
             ).catch((error) => {
               console.error("Error fetching tokenOfOwnerByIndex", error)
@@ -784,7 +780,7 @@ class TranchedPoolBacker {
               tokenIds.map((tokenId) =>
                 poolTokensContract.readOnly.methods
                   .getTokenInfo(tokenId)
-                  .call(undefined, currentBlock.number)
+                  .call(undefined, "latest")
                   .then((res) => tokenInfo(tokenId, res))
               )
             ).catch((error) => {
@@ -806,9 +802,7 @@ class TranchedPoolBacker {
 
     let availableToWithdrawAmounts = await Promise.all(
       this.tokenInfos.map((tokenInfo) =>
-        this.tranchedPool.contract.readOnly.methods
-          .availableToWithdraw(tokenInfo.id)
-          .call(undefined, currentBlock.number)
+        this.tranchedPool.contract.readOnly.methods.availableToWithdraw(tokenInfo.id).call(undefined, "latest")
       )
     )
     this.tokenInfos.forEach((tokenInfo, i) => {

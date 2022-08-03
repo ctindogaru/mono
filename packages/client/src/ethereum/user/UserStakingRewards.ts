@@ -88,7 +88,7 @@ export class UserStakingRewards {
   async getTokenIds({address, stakingRewards, currentBlock}): Promise<string[]> {
     return stakingRewards.contract.readOnly.methods
       .balanceOf(address)
-      .call(undefined, currentBlock.number)
+      .call(undefined, "latest")
       .then((balance: string) => {
         const numPositions = parseInt(balance, 10)
         return numPositions
@@ -98,9 +98,7 @@ export class UserStakingRewards {
           Array(numPositions)
             .fill("")
             .map((val, i) =>
-              stakingRewards.contract.readOnly.methods
-                .tokenOfOwnerByIndex(address, i)
-                .call(undefined, currentBlock.number)
+              stakingRewards.contract.readOnly.methods.tokenOfOwnerByIndex(address, i).call(undefined, "latest")
             )
         )
       )
@@ -167,7 +165,7 @@ export class UserStakingRewards {
   async getCurrentEarnRateForPositions({tokenIds, stakingRewards, currentBlock}): Promise<string[]> {
     return Promise.all(
       tokenIds.map((tokenId) =>
-        stakingRewards.contract.readOnly.methods.positionCurrentEarnRate(tokenId).call(undefined, currentBlock.number)
+        stakingRewards.contract.readOnly.methods.positionCurrentEarnRate(tokenId).call(undefined, "latest")
       )
     )
   }

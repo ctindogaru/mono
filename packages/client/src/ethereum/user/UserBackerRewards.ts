@@ -63,16 +63,12 @@ export class UserBackerRewards {
                   backersOnlyTokenInfo,
                   seniorPoolMatchingClaimed,
                 ] = await Promise.all([
-                  backerRewards.contract.readOnly.methods
-                    .poolTokenClaimableRewards(tokenId)
-                    .call(undefined, currentBlock.number),
+                  backerRewards.contract.readOnly.methods.poolTokenClaimableRewards(tokenId).call(undefined, "latest"),
                   backerRewards.contract.readOnly.methods
                     .stakingRewardsEarnedSinceLastWithdraw(tokenId)
-                    .call(undefined, currentBlock.number),
-                  backerRewards.contract.readOnly.methods.tokens(tokenId).call(undefined, currentBlock.number),
-                  backerRewards.contract.readOnly.methods
-                    .stakingRewardsClaimed(tokenId)
-                    .call(undefined, currentBlock.number),
+                    .call(undefined, "latest"),
+                  backerRewards.contract.readOnly.methods.tokens(tokenId).call(undefined, "latest"),
+                  backerRewards.contract.readOnly.methods.stakingRewardsClaimed(tokenId).call(undefined, "latest"),
                 ])
                 return {
                   tokenId,

@@ -218,7 +218,7 @@ export class User {
     const {goListed, uidTypeToBalance} = await this._fetchGoListStatus(this.address, currentBlock)
 
     const gfiBalance = new BigNumber(
-      await gfi.contract.readOnly.methods.balanceOf(this.address).call(undefined, currentBlock.number)
+      await gfi.contract.readOnly.methods.balanceOf(this.address).call(undefined, "latest")
     )
 
     const userStakingRewards = new UserStakingRewards()
@@ -454,7 +454,7 @@ export class User {
     uidTypeToBalance: UIDTypeToBalance
   }> {
     const go = this.goldfinchProtocol.getContract<Go>("Go")
-    const goListed = await go.readOnly.methods.go(address).call(undefined, currentBlock.number)
+    const goListed = await go.readOnly.methods.go(address).call(undefined, "latest")
 
     // check if user has non-US or US non-accredited UID
     const uniqueIdentity = this.goldfinchProtocol.getContract<UniqueIdentity>("UniqueIdentity")
@@ -469,7 +469,7 @@ export class User {
           NON_US_ENTITY_ID_TYPE_4,
         ]
       )
-      .call(undefined, currentBlock.number)
+      .call(undefined, "latest")
 
     const hasNonUSUID = !new BigNumber(String(balances[0])).isZero()
     const hasUSAccreditedUID = !new BigNumber(String(balances[1])).isZero()

@@ -34,8 +34,8 @@ export class MerkleDirectDistributor {
 
   async initialize(currentBlock: BlockInfo): Promise<void> {
     const [gfiAddress, isPaused] = await Promise.all([
-      this.contract.readOnly.methods.gfi().call(undefined, currentBlock.number),
-      this.contract.readOnly.methods.paused().call(undefined, currentBlock.number),
+      this.contract.readOnly.methods.gfi().call(undefined, "latest"),
+      this.contract.readOnly.methods.paused().call(undefined, "latest"),
     ])
     if (gfiAddress !== this.goldfinchProtocol.getAddress("GFI")) {
       throw new Error("MerkleDirectDistributor address of GFI contract doesn't match with deployed GFI address")

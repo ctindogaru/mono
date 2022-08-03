@@ -69,7 +69,7 @@ export class UserMerkleDistributor {
     )
     const [withAcceptance, _tokenLaunchTime] = await Promise.all([
       this._getAirdropsWithAcceptance(airdropsForRecipient, merkleDistributor, currentBlock),
-      communityRewards.contract.readOnly.methods.tokenLaunchTimeInSeconds().call(undefined, currentBlock.number),
+      communityRewards.contract.readOnly.methods.tokenLaunchTimeInSeconds().call(undefined, "latest"),
     ])
     const tokenLaunchTime = new BigNumber(_tokenLaunchTime)
     const airdrops = withAcceptance.reduce<{
@@ -110,7 +110,7 @@ export class UserMerkleDistributor {
               0,
               currentBlock.timestamp
             )
-            .call(undefined, currentBlock.number)
+            .call(undefined, "latest")
         )
         const vested = optimisticVested
         return {
@@ -153,7 +153,7 @@ export class UserMerkleDistributor {
         grantInfo,
         isAccepted: await merkleDistributor.contract.readOnly.methods
           .isGrantAccepted(grantInfo.index)
-          .call(undefined, currentBlock.number),
+          .call(undefined, "latest"),
       }))
     )
   }

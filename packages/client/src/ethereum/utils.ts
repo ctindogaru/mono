@@ -276,7 +276,7 @@ async function fetchDataFromAttributes(
     return Promise.resolve(result)
   }
   var promises = attributes.map((methodInfo) => {
-    return web3Obj.methods[methodInfo.method](...(methodInfo?.args || [])).call(undefined, blockNumber)
+    return web3Obj.methods[methodInfo.method](...(methodInfo?.args || [])).call(undefined, "latest")
   })
   return Promise.all(promises)
     .then((results) => {

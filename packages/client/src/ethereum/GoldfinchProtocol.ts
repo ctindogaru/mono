@@ -81,9 +81,7 @@ class GoldfinchProtocol {
 
   async getConfigNumber(key: number, currentBlock: BlockInfo): Promise<BigNumber> {
     let configContract = this.getContract<GoldfinchConfig>("GoldfinchConfig")
-    const result = (
-      await configContract.readOnly.methods.getNumber(key).call(undefined, currentBlock.number)
-    ).toString()
+    const result = (await configContract.readOnly.methods.getNumber(key).call(undefined, "latest")).toString()
     return new BigNumber(result)
   }
 

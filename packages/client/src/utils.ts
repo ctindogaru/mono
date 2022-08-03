@@ -202,7 +202,7 @@ export function getBlockInfo(block: AsyncReturnType<typeof getCurrentBlock>): Bl
     throw new Error(`Timestamp of block ${block.number} is not a number: ${block.timestamp}`)
   }
   return {
-    number: block.number - 1,
+    number: block.number,
     timestamp: block.timestamp,
   }
 }

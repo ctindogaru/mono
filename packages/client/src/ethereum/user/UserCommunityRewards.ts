@@ -54,16 +54,14 @@ export class UserCommunityRewards {
     // `recipient`, whereas the latter does not.
     const grants = await communityRewards.contract.readOnly.methods
       .balanceOf(this.address)
-      .call(undefined, currentBlock.number)
+      .call(undefined, "latest")
       .then((balance: string) => parseInt(balance, 10))
       .then((numPositions: number) =>
         Promise.all(
           Array(numPositions)
             .fill("")
             .map((val, i) =>
-              communityRewards.contract.readOnly.methods
-                .tokenOfOwnerByIndex(this.address, i)
-                .call(undefined, currentBlock.number)
+              communityRewards.contract.readOnly.methods.tokenOfOwnerByIndex(this.address, i).call(undefined, "latest")
             )
         )
       )
@@ -72,12 +70,12 @@ export class UserCommunityRewards {
           tokenIds,
           Promise.all(
             tokenIds.map((tokenId) =>
-              communityRewards.contract.readOnly.methods.grants(tokenId).call(undefined, currentBlock.number)
+              communityRewards.contract.readOnly.methods.grants(tokenId).call(undefined, "latest")
             )
           ),
           Promise.all(
             tokenIds.map((tokenId) =>
-              communityRewards.contract.readOnly.methods.claimableRewards(tokenId).call(undefined, currentBlock.number)
+              communityRewards.contract.readOnly.methods.claimableRewards(tokenId).call(undefined, "latest")
             )
           ),
           Promise.all(

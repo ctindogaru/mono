@@ -68,7 +68,7 @@ class GFI {
       value: {
         currentBlock,
         price: await getGFIPrice(),
-        supply: new BigNumber(await this.contract.readOnly.methods.totalSupply().call(undefined, currentBlock.number)),
+        supply: new BigNumber(await this.contract.readOnly.methods.totalSupply().call(undefined, "latest")),
       },
     }
   }

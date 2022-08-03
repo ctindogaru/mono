@@ -93,7 +93,7 @@ class SeniorPool {
 
   async initialize(stakingRewards: StakingRewardsLoaded, gfi: GFILoaded, currentBlock: BlockInfo): Promise<void> {
     const poolData = await fetchSeniorPoolData(this, this.usdc, stakingRewards, gfi, currentBlock)
-    const isPaused = await this.contract.readOnly.methods.paused().call(undefined, currentBlock.number)
+    const isPaused = await this.contract.readOnly.methods.paused().call(undefined, "latest")
     this.info = {
       loaded: true,
       value: {
@@ -246,7 +246,7 @@ async function fetchCapitalProviderData(
   assertBigNumber(sharePrice)
 
   const numSharesNotStaked = new BigNumber(
-    await pool.fidu.readOnly.methods.balanceOf(user.address).call(undefined, currentBlock.number)
+    await pool.fidu.readOnly.methods.balanceOf(user.address).call(undefined, "latest")
   )
   const stakingInfo = getCapitalProviderStakingInfo(user.info.value.stakingRewards, gfi)
   const numSharesStakedLocked = stakingInfo.shares.locked
@@ -270,7 +270,7 @@ async function fetchCapitalProviderData(
 
   const address = user.address
   const allowance = new BigNumber(
-    await pool.usdc.readOnly.methods.allowance(address, pool.address).call(undefined, currentBlock.number)
+    await pool.usdc.readOnly.methods.allowance(address, pool.address).call(undefined, "latest")
   )
   const weightedAverageSharePrice = await getWeightedAverageSharePrice(
     pool,
@@ -355,12 +355,10 @@ async function fetchSeniorPoolData(
       blockNumber: currentBlock.number,
     }
   )
-  let rawBalance = new BigNumber(
-    await erc20.readOnly.methods.balanceOf(pool.address).call(undefined, currentBlock.number)
-  )
+  let rawBalance = new BigNumber(await erc20.readOnly.methods.balanceOf(pool.address).call(undefined, "latest"))
   let compoundBalance = new BigNumber(_compoundBalance)
   let balance = compoundBalance.plus(rawBalance)
-  let totalShares = new BigNumber(await pool.fidu.readOnly.methods.totalSupply().call(undefined, currentBlock.number))
+  let totalShares = new BigNumber(await pool.fidu.readOnly.methods.totalSupply().call(undefined, "latest"))
 
   // Do some slightly goofy multiplication and division here so that we have consistent units across
   // 'balance', 'totalPoolBalance', and 'totalLoansOutstanding', allowing us to do arithmetic between them
@@ -371,7 +369,7 @@ async function fetchSeniorPoolData(
     .div(FIDU_DECIMALS.toString())
   let totalPoolAssets = totalPoolAssetsInDollars.multipliedBy(USDC_DECIMALS.toString())
   let totalLoansOutstanding = new BigNumber(
-    await pool.contract.readOnly.methods.totalLoansOutstanding().call(undefined, currentBlock.number)
+    await pool.contract.readOnly.methods.totalLoansOutstanding().call(undefined, "latest")
   )
   const tranchedPoolAddresses = await getTranchedPoolAddressesForSeniorPoolCalc(pool, currentBlock)
   let cumulativeWritedowns = await getCumulativeWritedowns(pool, currentBlock)
@@ -393,7 +391,7 @@ async function fetchSeniorPoolData(
   const go = pool.goldfinchProtocol.getContract<Go>("Go")
   let getSeniorPoolIdTypes
   try {
-    getSeniorPoolIdTypes = await go.readOnly.methods.getSeniorPoolIdTypes().call(undefined, currentBlock.number)
+    getSeniorPoolIdTypes = await go.readOnly.methods.getSeniorPoolIdTypes().call(undefined, "latest")
   } catch (e) {
     // @TODO gregegan hardcoded until v2.6 gets deployed, then we can remove this
     getSeniorPoolIdTypes = [0, 1, 3, 4]
@@ -687,15 +685,15 @@ async function getEstimatedTotalInterest(
   const protocolFee = new BigNumber("0.1")
 
   const getEstimatedInterestForPool = async (pool: Web3IO<TranchedPool>) => {
-    const creditLineAddress = await pool.readOnly.methods.creditLine().call(undefined, currentBlock.number)
+    const creditLineAddress = await pool.readOnly.methods.creditLine().call(undefined, "latest")
     const creditLine = await buildCreditLineReadOnly(creditLineAddress)
 
-    const balance = new BigNumber(await creditLine.methods.balance().call(undefined, currentBlock.number))
-    const interestApr = new BigNumber(
-      await creditLine.methods.interestApr().call(undefined, currentBlock.number)
-    ).dividedBy(INTEREST_DECIMALS.toString())
+    const balance = new BigNumber(await creditLine.methods.balance().call(undefined, "latest"))
+    const interestApr = new BigNumber(await creditLine.methods.interestApr().call(undefined, "latest")).dividedBy(
+      INTEREST_DECIMALS.toString()
+    )
     const juniorFeePercentage = new BigNumber(
-      await pool.readOnly.methods.juniorFeePercent().call(undefined, currentBlock.number)
+      await pool.readOnly.methods.juniorFeePercent().call(undefined, "latest")
     ).dividedBy("100")
 
     const address = pool.readOnly.options.address.toLowerCase()
@@ -924,43 +922,45 @@ class StakingRewards {
       await Promise.all([
         this.contract.readOnly.methods
           .paused()
-          .call(undefined, currentBlock.number)
+          .call(undefined, "latest")
           .catch((error) => {
             console.error("Error initializing StakingRewards: paused", error)
             throw error
           }),
         this.contract.readOnly.methods
           .currentEarnRatePerToken()
-          .call(undefined, currentBlock.number)
+          .call(undefined, "latest")
           .then((currentEarnRate: string) => new BigNumber(currentEarnRate))
           .catch((error) => {
             console.error("Error initializing StakingRewards: currentEarnRatePerToken", error)
             throw error
           }),
-        this.contract.readOnly.methods
-          .getBaseTokenExchangeRate(StakedPositionType.CurveLP)
-          .call(undefined, currentBlock.number)
-          .then((exchangeRate) => new BigNumber(exchangeRate))
-          .catch((error) => {
-            console.error("Error initializing StakingRewards: getBaseTokenExchangeRate", error)
-            throw error
-          }),
+        // this.contract.readOnly.methods
+        //   .getBaseTokenExchangeRate(StakedPositionType.CurveLP)
+        //   .call(undefined, "latest")
+        //   .then((exchangeRate) => new BigNumber(exchangeRate))
+        //   .catch((error) => {
+        //     console.error("Error initializing StakingRewards: getBaseTokenExchangeRate", error)
+        //     throw error
+        //   }),
+        new BigNumber(10),
         this.contract.readOnly.methods
           .getEffectiveMultiplierForPositionType(StakedPositionType.CurveLP)
-          .call(undefined, currentBlock.number)
+          .call(undefined, "latest")
           .then((multiplier) => new BigNumber(multiplier))
           .catch((error) => {
             console.error("Error initializing StakingRewards: getEffectiveMultiplierForPositionType", error)
             throw error
           }),
-        this.curvePool.readOnly.methods
-          .lp_price()
-          .call(undefined, currentBlock.number)
-          .then((price) => new BigNumber(price))
-          .catch((error) => {
-            console.error("Error initializing StakingRewards: lp_price", error)
-            throw error
-          }),
+        new BigNumber(10),
+        // this.curvePool.readOnly.methods
+        //   .lp_price()
+        //   .call(undefined, "latest")
+        //   .then((price) => new BigNumber(price))
+        //   .catch((error) => {
+        //     console.error("Error initializing StakingRewards: lp_price", error)
+        //     throw error
+        //   }),
       ])
 
     this.info = {
@@ -982,13 +982,13 @@ class StakingRewards {
     currentBlock: BlockInfo
   ): Promise<PositionOptimisticIncrement> {
     const earnedSinceLastCheckpoint = new BigNumber(
-      await this.contract.readOnly.methods.earnedSinceLastCheckpoint(tokenId).call(undefined, currentBlock.number)
+      await this.contract.readOnly.methods.earnedSinceLastCheckpoint(tokenId).call(undefined, "latest")
     )
     const optimisticCurrentGrant = rewards.totalUnvested.plus(rewards.totalVested).plus(earnedSinceLastCheckpoint)
     const optimisticTotalVested = new BigNumber(
       await this.contract.readOnly.methods
         .totalVestedAt(rewards.startTime, rewards.endTime, currentBlock.timestamp, optimisticCurrentGrant.toString(10))
-        .call(undefined, currentBlock.number)
+        .call(undefined, "latest")
     )
     const optimisticTotalUnvested = optimisticCurrentGrant.minus(optimisticTotalVested)
 
@@ -1041,12 +1041,12 @@ class StakingRewards {
     let raw: unknown
     if (this.goldfinchProtocol.networkIsMainnet) {
       try {
-        raw = await this.contract.readOnly.methods.positions(tokenId).call(undefined, currentBlock.number)
+        raw = await this.contract.readOnly.methods.positions(tokenId).call(undefined, "latest")
       } catch {
-        raw = await this.legacyContract.readOnly.methods.positions(tokenId).call(undefined, currentBlock.number)
+        raw = await this.legacyContract.readOnly.methods.positions(tokenId).call(undefined, "latest")
       }
     } else {
-      raw = await this.contract.readOnly.methods.positions(tokenId).call(undefined, currentBlock.number)
+      raw = await this.contract.readOnly.methods.positions(tokenId).call(undefined, "latest")
     }
     return StakingRewards.parseStoredPosition(raw)
   }
@@ -1140,7 +1140,7 @@ class Zapper {
   }
 
   async initialize(currentBlock: BlockInfo): Promise<void> {
-    const isPaused = await this.contract.readOnly.methods.paused().call(undefined, currentBlock.number)
+    const isPaused = await this.contract.readOnly.methods.paused().call(undefined, "latest")
 
     this.info = {
       loaded: true,
