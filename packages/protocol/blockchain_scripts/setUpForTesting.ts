@@ -255,6 +255,39 @@ export async function setUpForTesting(hre: HardhatRuntimeEnvironment, {overrideA
   }
 }
 
+export async function createFujiPool(hre: HardhatRuntimeEnvironment, {overrideAddress, logger}: OverrideOptions = {}) {
+  const {
+    getNamedAccounts,
+    deployments: {getOrNull, log},
+    getChainId,
+  } = hre
+  if (!logger) {
+    logger = log
+  }
+  const protocol_owner = await getProtocolOwner()
+  assertIsString(protocol_owner)
+
+  const chainId = await getChainId()
+  assertIsChainId(chainId)
+
+  const underwriter = protocol_owner
+  const goldfinchFactory = await getDeployedAsEthersContract<GoldfinchFactory>(getOrNull, "GoldfinchFactory")
+
+  const {erc20} = await getERC20s({hre, chainId})
+
+  const protocolBorrowerCon = protocol_owner
+
+  const empty = await createPoolForBorrower({
+    getOrNull,
+    underwriter,
+    goldfinchFactory,
+    borrower: protocolBorrowerCon,
+    erc20,
+    allowedUIDTypes: [...NON_US_UID_TYPES, ...US_UID_TYPES],
+  })
+  await writePoolMetadata({pool: empty, borrower: "US Fuji Pool Empty"})
+}
+
 async function setUpRewards(
   erc20: any,
   getOrNull: (name: string) => Promise<Deployment | null>,
@@ -490,8 +523,8 @@ async function writePoolMetadata({
   const NDAUrl = "https://example.com"
   const status = [false, true, undefined]
 
-  const metadataPath = "../../packages/client/config/pool-metadata/localhost.json"
-  const metadataPathForClient2 = "../../packages/client2/constants/metadata/localhost.json"
+  const metadataPath = "../../packages/client/config/pool-metadata/fuji.json"
+  const metadataPathForClient2 = "../../packages/client2/constants/metadata/fuji.json"
   let metadata: any
   try {
     const data = await fs.promises.readFile(metadataPath)

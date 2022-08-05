@@ -224,7 +224,8 @@ export function shouldUseWeb3(): boolean {
     console.warn("Cannot use subgraph locally with mainnet forking. Using web3 instead.")
     return true
   }
-  return process.env.REACT_APP_TOGGLE_THE_GRAPH !== "true"
+  return true
+  // return process.env.REACT_APP_TOGGLE_THE_GRAPH !== "true"
 }
 
 export function getInjectedProvider(): any {

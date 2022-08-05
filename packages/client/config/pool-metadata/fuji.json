@@ -1,1 +1,13 @@
-{}
+{
+  "0xdf042953128ccf4b3aa24c172bce429e9c2a5ce8": {
+    "name": "US Fuji Pool Empty: CryptoPunks Fund",
+    "category": "Loans to degens",
+    "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAdUlEQVR42mNgGAWjAAj+48GUG37i92+cmFJL/hMDKLHkv1TeVYKYIgvwBQ81gommFvxHtqB0797/6BbCxMixAGzA7AcPUFyJzEcWI9sHxAQP1YIIGWPzCVUjeehbQLN8gK2wG1o+oElpSiiIqFoXUKuCoboFAP+MJG7jSOWlAAAAAElFTkSuQmCC",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget mi fringilla, maximus quam sodales, condimentum arcu. Vivamus arcu lorem, ultrices at ligula ut, tempor consectetur nibh. Vivamus commodo felis eu urna facilisis, feugiat gravida lectus egestas. Suspendisse consectetur urna at ornare lacinia. Etiam erat nunc, interdum sed gravida at, condimentum in metus. Mauris at sagittis libero.",
+    "detailsUrl": "https://example.com",
+    "NDAUrl": "https://example.com",
+    "backerLimit": "0.025",
+    "disabled": false,
+    "launchTime": "62ed2b98"
+  }
+}

@@ -1,9 +1,10 @@
 import {HardhatRuntimeEnvironment} from "hardhat/types"
 import {MAINNET_CHAIN_ID} from "../blockchain_scripts/deployHelpers"
-import {setUpForTesting} from "../blockchain_scripts/setUpForTesting"
+import {createFujiPool, setUpForTesting} from "../blockchain_scripts/setUpForTesting"
 
 async function main(hre) {
   // await setUpForTesting(hre)
+  await createFujiPool(hre)
 }
 
 module.exports = main
