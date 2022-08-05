@@ -935,15 +935,15 @@ class StakingRewards {
             console.error("Error initializing StakingRewards: currentEarnRatePerToken", error)
             throw error
           }),
-        // this.contract.readOnly.methods
-        //   .getBaseTokenExchangeRate(StakedPositionType.CurveLP)
-        //   .call(undefined, "latest")
-        //   .then((exchangeRate) => new BigNumber(exchangeRate))
-        //   .catch((error) => {
-        //     console.error("Error initializing StakingRewards: getBaseTokenExchangeRate", error)
-        //     throw error
-        //   }),
-        new BigNumber(10),
+        this.contract.readOnly.methods
+          .getBaseTokenExchangeRate(StakedPositionType.CurveLP)
+          .call(undefined, "latest")
+          .then((exchangeRate) => new BigNumber(exchangeRate))
+          .catch((error) => {
+            console.error("Error initializing StakingRewards: getBaseTokenExchangeRate", error)
+            throw error
+          }),
+        // new BigNumber(10),
         this.contract.readOnly.methods
           .getEffectiveMultiplierForPositionType(StakedPositionType.CurveLP)
           .call(undefined, "latest")
@@ -952,15 +952,15 @@ class StakingRewards {
             console.error("Error initializing StakingRewards: getEffectiveMultiplierForPositionType", error)
             throw error
           }),
-        new BigNumber(10),
-        // this.curvePool.readOnly.methods
-        //   .lp_price()
-        //   .call(undefined, "latest")
-        //   .then((price) => new BigNumber(price))
-        //   .catch((error) => {
-        //     console.error("Error initializing StakingRewards: lp_price", error)
-        //     throw error
-        //   }),
+        // new BigNumber(10),
+        this.curvePool.readOnly.methods
+          .lp_price()
+          .call(undefined, "latest")
+          .then((price) => new BigNumber(price))
+          .catch((error) => {
+            console.error("Error initializing StakingRewards: lp_price", error)
+            throw error
+          }),
       ])
 
     this.info = {
