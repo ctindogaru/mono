@@ -391,6 +391,7 @@ export {
   getFromBlock,
   chainIdToNetworkID,
   MAINNET,
+  FUJI,
   LOCAL,
   getPoolEvents,
   getEtherscanSubdomain,
