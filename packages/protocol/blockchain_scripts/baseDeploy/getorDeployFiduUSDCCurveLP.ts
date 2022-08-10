@@ -13,6 +13,7 @@ import {
   updateConfig,
   MAINNET_FIDU_USDC_CURVE_LP_ADDRESS,
   isMainnetForking,
+  FUJI_CHAIN_ID,
   LOCAL_CHAIN_ID,
 } from "../deployHelpers"
 
@@ -24,7 +25,7 @@ export async function getOrDeployFiduUSDCCurveLP(deployer: ContractDeployer, con
   assertIsChainId(chainId)
   let fiduUSDCCurveLPAddress = MAINNET_FIDU_USDC_CURVE_LP_ADDRESS
   const protocolOwner = await getProtocolOwner()
-  if (chainId === LOCAL_CHAIN_ID && !isMainnetForking()) {
+  if ((chainId === LOCAL_CHAIN_ID || chainId === FUJI_CHAIN_ID) && !isMainnetForking()) {
     logger("We don't have a FIDU-USDC Curve LP address for this network, so deploying a fake contract")
     const initialAmount = String(new BN("10000000000000").mul(new BN(String(1e18))))
     const decimalPlaces = String(new BN(18))
@@ -34,15 +35,14 @@ export async function getOrDeployFiduUSDCCurveLP(deployer: ContractDeployer, con
       args: [initialAmount, decimalPlaces, config.address],
     })
     fiduUSDCCurveLPAddress = fakeFiduUSDCCurveLPAddress.address
-    await (
-      await getContract<TestFiduUSDCCurveLP, TestFiduUSDCCurveLPInstance>(
-        "TestFiduUSDCCurveLP",
-        TRUFFLE_CONTRACT_PROVIDER,
-        {
-          from: gf_deployer,
-        }
-      )
-    ).transfer(protocolOwner, String(new BN(10000000000000).mul(new BN(String(1e18)))))
+    const receipt = await getContract<TestFiduUSDCCurveLP, TestFiduUSDCCurveLPInstance>(
+      "TestFiduUSDCCurveLP",
+      TRUFFLE_CONTRACT_PROVIDER,
+      {
+        from: gf_deployer,
+      }
+    )
+    await receipt.transfer(protocolOwner, String(new BN(10000000000000).mul(new BN(String(1e18)))))
   }
   await updateConfig(config, "address", CONFIG_KEYS.FiduUSDCCurveLP, fiduUSDCCurveLPAddress, logger)
   return fiduUSDCCurveLPAddress

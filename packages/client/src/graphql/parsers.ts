@@ -92,7 +92,7 @@ async function parseTranchedPool(
   tranchedPool.isPaused = pool.isPaused
   tranchedPool.drawdownsPaused = await tranchedPool.contract.readOnly.methods
     .drawdownsPaused()
-    .call(undefined, currentBlock?.number || "latest")
+    .call(undefined, "latest")
 
   // This code addresses the case when the user doesn't have a web3 provider
   // since we need the current block timestamp to define the pool status.
@@ -106,11 +106,9 @@ async function parseTranchedPool(
   const [totalDeployed, fundableAt, numTranchesPerSlice] = await Promise.all(
     tranchedPool.isMultipleDrawdownsCompatible
       ? [
-          tranchedPool.contract.readOnly.methods.totalDeployed().call(undefined, currentBlock?.number || "latest"),
-          tranchedPool.contract.readOnly.methods.fundableAt().call(undefined, currentBlock?.number || "latest"),
-          tranchedPool.contract.readOnly.methods
-            .NUM_TRANCHES_PER_SLICE()
-            .call(undefined, currentBlock?.number || "latest"),
+          tranchedPool.contract.readOnly.methods.totalDeployed().call(undefined, "latest"),
+          tranchedPool.contract.readOnly.methods.fundableAt().call(undefined, "latest"),
+          tranchedPool.contract.readOnly.methods.NUM_TRANCHES_PER_SLICE().call(undefined, "latest"),
         ]
       : ["0", "0", "2"]
   )

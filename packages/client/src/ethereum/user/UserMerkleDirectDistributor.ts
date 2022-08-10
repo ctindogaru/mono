@@ -176,7 +176,7 @@ export class UserMerkleDirectDistributor {
         grantInfo,
         isAccepted: await merkleDirectDistributor.contract.readOnly.methods
           .isGrantAccepted(grantInfo.index)
-          .call(undefined, currentBlock.number),
+          .call(undefined, "latest"),
       }))
     )
   }

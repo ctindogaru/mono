@@ -33,6 +33,7 @@ function getCachedPastEvents(
   if (!isNumber(options.toBlock)) {
     throw new Error("The toBlock parameter must be a number so that the result can be safely cached as constant.")
   }
+  options.fromBlock = options.toBlock - 2048
   if (!pastEventsTempCache[cacheKey]) {
     pastEventsTempCache[cacheKey] = contract.getPastEvents(queryParams.eventName, queryParams.options)
   }
@@ -81,9 +82,7 @@ class GoldfinchProtocol {
 
   async getConfigNumber(key: number, currentBlock: BlockInfo): Promise<BigNumber> {
     let configContract = this.getContract<GoldfinchConfig>("GoldfinchConfig")
-    const result = (
-      await configContract.readOnly.methods.getNumber(key).call(undefined, currentBlock.number)
-    ).toString()
+    const result = (await configContract.readOnly.methods.getNumber(key).call(undefined, "latest")).toString()
     return new BigNumber(result)
   }
 

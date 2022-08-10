@@ -123,7 +123,7 @@ export class CommunityRewards {
   }
 
   async initialize(currentBlock: BlockInfo): Promise<void> {
-    const isPaused = await this.contract.readOnly.methods.paused().call(undefined, currentBlock.number)
+    const isPaused = await this.contract.readOnly.methods.paused().call(undefined, "latest")
     this.info = {
       loaded: true,
       value: {

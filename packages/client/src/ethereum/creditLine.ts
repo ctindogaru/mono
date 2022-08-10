@@ -154,7 +154,7 @@ class CreditLine extends BaseCreditLine {
     this.termEndDate = moment.unix(this.termEndTime.toNumber()).format("MMM D, YYYY")
     this.maxLimit = await this._getMaxLimit(currentBlock)
     this.collectedPaymentBalance = new BigNumber(
-      await this.usdc.readOnly.methods.balanceOf(this.address).call(undefined, currentBlock.number)
+      await this.usdc.readOnly.methods.balanceOf(this.address).call(undefined, "latest")
     )
     this.periodDueAmount = this._calculateNextDueAmount()
     this.remainingPeriodDueAmount = BigNumber.max(this.periodDueAmount.minus(this.collectedPaymentBalance), zero)
@@ -175,7 +175,7 @@ class CreditLine extends BaseCreditLine {
     if (!this.isMultipleDrawdownsCompatible) {
       return this.currentLimit
     } else {
-      const maxLimit = await this.creditLine.readOnly.methods.maxLimit().call(undefined, currentBlock.number)
+      const maxLimit = await this.creditLine.readOnly.methods.maxLimit().call(undefined, "latest")
       return new BigNumber(maxLimit)
     }
   }

@@ -53,9 +53,9 @@ export class BackerRewards {
 
   async initialize(currentBlock: BlockInfo): Promise<void> {
     const [isPaused, maxInterestDollarsEligible, totalRewardPercentOfTotalGFI] = await Promise.all([
-      this.contract.readOnly.methods.paused().call(undefined, currentBlock.number),
-      this.contract.readOnly.methods.maxInterestDollarsEligible().call(undefined, currentBlock.number),
-      this.contract.readOnly.methods.totalRewardPercentOfTotalGFI().call(undefined, currentBlock.number),
+      this.contract.readOnly.methods.paused().call(undefined, "latest"),
+      this.contract.readOnly.methods.maxInterestDollarsEligible().call(undefined, "latest"),
+      this.contract.readOnly.methods.totalRewardPercentOfTotalGFI().call(undefined, "latest"),
     ])
 
     this.info = {
@@ -182,7 +182,7 @@ export class BackerRewards {
     const maxInterestDollarsEligible = this.info.value.maxInterestDollarsEligible
     const totalRewardPercentOfTotalGFI = this.info.value.totalRewardPercentOfTotalGFI
     const totalInterestReceived = new BigNumber(
-      await this.contract.readOnly.methods.totalInterestReceived().call(undefined, currentBlock.number)
+      await this.contract.readOnly.methods.totalInterestReceived().call(undefined, "latest")
     )
 
     const reduced = scheduledRepayments.reduce<{
@@ -370,7 +370,7 @@ export class BackerRewards {
       tranchedPools.map(async (tranchedPool): Promise<ForTranchedPool<BigNumber>> => {
         const backerRewardsInfo = await this.contract.readOnly.methods
           .pools(tranchedPool.address)
-          .call(undefined, currentBlock.number)
+          .call(undefined, "latest")
         const accRewardsPerPrincipalDollar = new BigNumber(backerRewardsInfo)
         return {tranchedPool, value: accRewardsPerPrincipalDollar}
       })

@@ -167,6 +167,7 @@ export default function useStakingData(): StakingData {
     const unstakedCurve = new BigNumber(
       await stakingRewards.curveLPToken.userWallet.methods.balanceOf(user.address).call(undefined, "latest")
     )
+    // const unstakedCurve = new BigNumber(100)
     const unstakedUSDC = new BigNumber(
       await pool.usdc.userWallet.methods.balanceOf(user.address).call(undefined, "latest")
     )

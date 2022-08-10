@@ -10,8 +10,10 @@ import {
   provider as ProviderType,
   WebsocketProvider as WebsocketProviderType,
 } from "web3-core"
+// eslint-disable-next-line
 import WebsocketProvider from "web3-providers-ws"
 import HttpProvider from "web3-providers-http"
+// eslint-disable-next-line
 import {JsonRpcPayload, JsonRpcResponse, WebsocketProviderOptions} from "web3-core-helpers"
 import {Web3IO, UserWalletWeb3Status} from "./types/web3"
 import {MAINNET} from "./ethereum/utils"
@@ -40,8 +42,10 @@ function cleanSessionAndReload() {
 const networkNameByChainId: {[chainId: string]: string} = {
   "0x1": MAINNET,
   "0x4": "rinkeby",
+  "0xa869": "fuji",
 }
 
+// eslint-disable-next-line
 const websocketOptions: WebsocketProviderOptions = {
   // Configure the websocket connection to automatically reconnect if it drops (cf.
   // https://ethereum.stackexchange.com/a/84194). We observed Websocket connections to Infura
@@ -174,6 +178,12 @@ const getWeb3ProviderConfig = (networkName: string): Web3ProviderConfig | undefi
         httpUrl: `https://eth-mainnet.alchemyapi.io/v2/${process.env.REACT_APP_ALCHEMY_API_KEY}`,
         name: "Alchemy",
       }
+    : networkName === "fuji"
+    ? {
+        websocketUrl: "wss://api.avax-test.network/ext/bc/C/rpc",
+        httpUrl: "https://api.avax-test.network/ext/bc/C/rpc",
+        name: "Alchemy",
+      }
     : undefined
 
 function genReadOnlyWeb3(metamaskProvider: MetaMaskInpageProvider): Web3 {
@@ -184,18 +194,22 @@ function genReadOnlyWeb3(metamaskProvider: MetaMaskInpageProvider): Web3 {
     assertNonNullable(networkName)
     const providerConfig = getWeb3ProviderConfig(networkName)
     if (providerConfig) {
-      wrapped =
-        process.env.REACT_APP_WEB3_HTTP === "yes"
-          ? {
-              type: "http",
-              // @ts-expect-error
-              provider: new HttpProvider(providerConfig.httpUrl),
-            }
-          : {
-              type: "websocket",
-              // @ts-expect-error cf. https://ethereum.stackexchange.com/a/96436
-              provider: new WebsocketProvider(providerConfig.websocketUrl, websocketOptions),
-            }
+      wrapped = {
+        type: "http",
+        // @ts-expect-error
+        provider: new HttpProvider(providerConfig.httpUrl),
+      }
+      // process.env.REACT_APP_WEB3_HTTP === "yes"
+      //   ? {
+      //       type: "http",
+      //       // @ts-expect-error
+      //       provider: new HttpProvider(providerConfig.httpUrl),
+      //     }
+      //   : {
+      //       type: "websocket",
+      //       // @ts-expect-error cf. https://ethereum.stackexchange.com/a/96436
+      //       provider: new WebsocketProvider(providerConfig.websocketUrl, websocketOptions),
+      //     }
       console.log(`Using custom ${providerConfig.name} provider with ${wrapped.type} connection.`)
     }
   } else {
@@ -249,11 +263,13 @@ function getWeb3(): Web3IO<Web3> {
       const providerConfig = getWeb3ProviderConfig(networkName)
       if (providerConfig) {
         const provider =
-          process.env.REACT_APP_WEB3_HTTP === "yes"
-            ? // @ts-expect-error cf. https://ethereum.stackexchange.com/a/96436
-              new HttpProvider(providerConfig.httpUrl)
-            : // @ts-expect-error cf. https://ethereum.stackexchange.com/a/96436
-              new WebsocketProvider(providerConfig.websocketUrl, websocketOptions)
+          // @ts-expect-error cf. https://ethereum.stackexchange.com/a/96436
+          new HttpProvider(providerConfig.httpUrl)
+        // process.env.REACT_APP_WEB3_HTTP === "yes"
+        //   ? // @ts-expect-error cf. https://ethereum.stackexchange.com/a/96436
+        //     new HttpProvider(providerConfig.httpUrl)
+        //   : // @ts-expect-error cf. https://ethereum.stackexchange.com/a/96436
+        //     new WebsocketProvider(providerConfig.websocketUrl, websocketOptions)
         const sharedWeb3 = new Web3(provider)
         return {
           readOnly: sharedWeb3,
