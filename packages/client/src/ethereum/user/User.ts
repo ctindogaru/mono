@@ -132,12 +132,11 @@ export class User {
 
   goldfinchProtocol: GoldfinchProtocol
 
-  private creditDesk: Web3IO<CreditDesk>
+  private creditDesk: Web3IO<CreditDesk> | undefined
 
   constructor(
     address: string,
     networkId: string,
-    creditDesk: Web3IO<CreditDesk>,
     goldfinchProtocol: GoldfinchProtocol,
     borrower: BorrowerInterface | undefined
   ) {
@@ -148,7 +147,7 @@ export class User {
     this.networkId = networkId
     this.borrower = borrower
     this.goldfinchProtocol = goldfinchProtocol
-    this.creditDesk = creditDesk
+    this.creditDesk = undefined
     this.info = {
       loaded: false,
       value: undefined,
