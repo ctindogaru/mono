@@ -8,7 +8,7 @@
     "serve": "npm run build && npx firebase emulators:exec --ui --project=dev \"tsc -w --preserveWatchOutput\"",
     "shell": "npm run build && npx firebase functions:shell",
     "start": "npm run serve",
-    "start:local": "CHAIN_IDENTIFIER=http://localhost:8545 LOCAL=yes npm run serve",
+    "start:local": "CHAIN_IDENTIFIER=1287 LOCAL=yes npm run serve",
     "start:murmuration": "MURMURATION=yes npm run start",
     "logs": "firebase functions:log",
     "test": "npm run build && NODE_OPTIONS=--unhandled-rejections=strict NODE_ENV=test npx firebase emulators:exec --project=dev \"NODE_ENV=test npx hardhat test --show-stack-traces\"",

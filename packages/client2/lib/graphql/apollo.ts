@@ -15,7 +15,7 @@ const graphQlApiUrl =
     ? process.env.NEXT_PUBLIC_GRAPHQL_URL
     : process.env.NEXT_PUBLIC_NETWORK_NAME === "mainnet"
     ? "https://api.thegraph.com/subgraphs/name/goldfinch-eng/goldfinch-v2"
-    : process.env.NEXT_PUBLIC_NETWORK_NAME === "localhost"
+    : process.env.NEXT_PUBLIC_NETWORK_NAME === "moonbeam"
     ? "http://localhost:8000/subgraphs/name/goldfinch-subgraph"
     : null;
 if (!graphQlApiUrl) {

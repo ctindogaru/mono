@@ -8,7 +8,7 @@ if (!networkName) {
   throw new Error("Network name is not defined in env vars");
 }
 export const DESIRED_CHAIN_ID =
-  networkName === "mainnet" ? 1 : networkName === "murmuration" ? 31337 : 31337;
+  networkName === "mainnet" ? 1 : networkName === "murmuration" ? 31337 : 1287;
 
 export const USDC_DECIMALS = 6;
 export const GFI_DECIMALS = 18;

@@ -40,7 +40,7 @@ class NonExistingUserError extends Error {}
 class ExistingUidRecipientAddressError extends Error {}
 
 const UNIT_TESTING_SIGNER = "0xc34461018f970d343d5a25e4Ed28C4ddE6dcCc3F"
-const MURMURATION_AND_DEV_SIGNER = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
+const MURMURATION_AND_DEV_SIGNER = "0x618C20c64cAc5211E099D355ba213790708e7462"
 let ALLOWED_SIGNERS: string[]
 if (process.env.NODE_ENV == "test") {
   ALLOWED_SIGNERS = [UNIT_TESTING_SIGNER, UNIQUE_IDENTITY_SIGNER_MAINNET_ADDRESS]

@@ -28,6 +28,15 @@ if (networkName === "mainnet") {
       .toString()
   );
   contracts = localDeployments["31337"].localhost.contracts;
+} else if (networkName === "moonbeam") {
+  const localDeployments = JSON.parse(
+    fs
+      .readFileSync(
+        path.resolve(__dirname, "../constants/contract-addresses/all_dev.json")
+      )
+      .toString()
+  );
+  contracts = localDeployments["1287"].moonbeam.contracts;
 } else if (networkName === "murmuration") {
   const murmurationDeployments = JSON.parse(
     fs

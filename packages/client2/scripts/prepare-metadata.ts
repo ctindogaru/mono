@@ -29,6 +29,15 @@ export default localhostMetadata as Record<string, PoolMetadata>;
 `;
 
   fs.writeFileSync(metadataFilePath, code);
+} else if (metadataNetwork === "moonbeam") {
+  console.log("Connecting app to metadata from moonbeam");
+  const code = `import moonbeamMetadata from "./moonbeam.json";
+import type { PoolMetadata } from "./types";
+
+export default moonbeamMetadata as Record<string, PoolMetadata>;
+`;
+
+  fs.writeFileSync(metadataFilePath, code);
 } else if (metadataNetwork === "murmuration") {
   console.log("Connecting app to metadata from murmuration");
   const code = `import murmurationMetadata from "./murmuration.json";
