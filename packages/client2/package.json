@@ -16,7 +16,7 @@
     "codegen": "graphql-codegen",
     "codegen-introspection": "graphql-codegen --config codegen-introspection.js",
     "typecheck": "npx tsc --noEmit",
-    "pre-commit": "lint-staged && npm run typecheck"
+    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.(js(x)?|ts(x)?)": [
