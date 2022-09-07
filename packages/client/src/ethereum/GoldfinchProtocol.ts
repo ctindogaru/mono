@@ -62,6 +62,9 @@ class GoldfinchProtocol {
   getContract<T = Contract>(contractOrAbi: string | any, address?: string, legacy: boolean = false): Web3IO<T> {
     const web3 = getWeb3()
     const deployments = legacy ? this.legacyDeployments : this.deployments
+    console.log(legacy)
+    console.log(contractOrAbi)
+    console.log(deployments)
     let abi = deployments.contracts[contractOrAbi]?.abi
     if (abi) {
       address = address || this.getAddress(contractOrAbi, legacy)

@@ -32,7 +32,7 @@ export default async function getUserData(
 ): Promise<UserLoaded> {
   const borrower = await getBorrowerContract(address, goldfinchProtocol, currentBlock)
 
-  const user = new User(address, networkId, creditDesk, goldfinchProtocol, borrower)
+  const user = new User(address, networkId, goldfinchProtocol, borrower)
   await user.initialize(
     pool,
     stakingRewards,
