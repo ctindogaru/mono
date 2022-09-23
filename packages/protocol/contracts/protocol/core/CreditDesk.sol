@@ -198,7 +198,7 @@ contract CreditDesk is BaseUpgradeablePausable, ICreditDesk {
     // So if the recalculation above sets the nextDueTime into the future,
     // then ensure we pass in the one just before this.
     if (timeToAssess > currentTime()) {
-      uint256 secondsPerPeriod = cl.paymentPeriodInDays().mul(SECONDS_PER_DAY);
+      uint256 secondsPerPeriod = cl.paymentPeriodInDays();
       timeToAssess = timeToAssess.sub(secondsPerPeriod);
     }
     _applyPayment(cl, getUSDCBalance(address(cl)), timeToAssess);
@@ -409,7 +409,7 @@ contract CreditDesk is BaseUpgradeablePausable, ICreditDesk {
 
   function isLate(CreditLine cl, uint256 timestamp) internal view returns (bool) {
     uint256 secondsElapsedSinceFullPayment = timestamp.sub(cl.lastFullPaymentTime());
-    return secondsElapsedSinceFullPayment > cl.paymentPeriodInDays().mul(SECONDS_PER_DAY);
+    return secondsElapsedSinceFullPayment > cl.paymentPeriodInDays();
   }
 
   function getGoldfinchFactory() internal view returns (GoldfinchFactory) {
@@ -460,7 +460,7 @@ contract CreditDesk is BaseUpgradeablePausable, ICreditDesk {
   }
 
   function calculateNextDueTime(CreditLine cl) internal view returns (uint256) {
-    uint256 secondsPerPeriod = cl.paymentPeriodInDays().mul(SECONDS_PER_DAY);
+    uint256 secondsPerPeriod = cl.paymentPeriodInDays();
     uint256 balance = cl.balance();
     uint256 nextDueTime = cl.nextDueTime();
     uint256 curTimestamp = currentTime();
@@ -538,7 +538,7 @@ contract CreditDesk is BaseUpgradeablePausable, ICreditDesk {
       // If interest was fully paid off, then set the last full payment as the previous due time
       uint256 mostRecentLastDueTime;
       if (currentTime() < nextDueTime) {
-        uint256 secondsPerPeriod = cl.paymentPeriodInDays().mul(SECONDS_PER_DAY);
+        uint256 secondsPerPeriod = cl.paymentPeriodInDays();
         mostRecentLastDueTime = nextDueTime.sub(secondsPerPeriod);
       } else {
         mostRecentLastDueTime = nextDueTime;

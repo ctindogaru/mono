@@ -205,7 +205,7 @@ contract CreditLine is BaseUpgradeablePausable, ICreditLine {
     // So if the recalculation above sets the nextDueTime into the future,
     // then ensure we pass in the one just before this.
     if (timeToAssess > currentTime()) {
-      uint256 secondsPerPeriod = paymentPeriodInDays.mul(SECONDS_PER_DAY);
+      uint256 secondsPerPeriod = paymentPeriodInDays;
       timeToAssess = timeToAssess.sub(secondsPerPeriod);
     }
     return handlePayment(_getUSDCBalance(address(this)), timeToAssess);
@@ -213,7 +213,7 @@ contract CreditLine is BaseUpgradeablePausable, ICreditLine {
 
   function calculateNextDueTime() internal view returns (uint256) {
     uint256 newNextDueTime = nextDueTime;
-    uint256 secondsPerPeriod = paymentPeriodInDays.mul(SECONDS_PER_DAY);
+    uint256 secondsPerPeriod = paymentPeriodInDays;
     uint256 curTimestamp = currentTime();
     // You must have just done your first drawdown
     if (newNextDueTime == 0 && balance > 0) {
@@ -245,7 +245,7 @@ contract CreditLine is BaseUpgradeablePausable, ICreditLine {
 
   function _isLate(uint256 timestamp) internal view returns (bool) {
     uint256 secondsElapsedSinceFullPayment = timestamp.sub(lastFullPaymentTime);
-    return balance > 0 && secondsElapsedSinceFullPayment > paymentPeriodInDays.mul(SECONDS_PER_DAY);
+    return balance > 0 && secondsElapsedSinceFullPayment > paymentPeriodInDays;
   }
 
   function _termStartTime() internal view returns (uint256) {
@@ -327,7 +327,7 @@ contract CreditLine is BaseUpgradeablePausable, ICreditLine {
       // If interest was fully paid off, then set the last full payment as the previous due time
       uint256 mostRecentLastDueTime;
       if (currentTime() < _nextDueTime) {
-        uint256 secondsPerPeriod = paymentPeriodInDays.mul(SECONDS_PER_DAY);
+        uint256 secondsPerPeriod = paymentPeriodInDays;
         mostRecentLastDueTime = _nextDueTime.sub(secondsPerPeriod);
       } else {
         mostRecentLastDueTime = _nextDueTime;

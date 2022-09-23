@@ -678,7 +678,7 @@ function App() {
                   }
                   hasGraphError={hasGraphError}
                 />
-                {(process.env.NODE_ENV === "development" || process.env.MURMURATION === "yes") && <DevTools />}
+                {/* {(process.env.NODE_ENV === "development" || process.env.MURMURATION === "yes") && <DevTools />} */}
                 <Sidebar />
                 <div>
                   <Switch>

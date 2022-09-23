@@ -46,7 +46,7 @@ export const originAllowed = (allowedOrigins: string[], origin: string): boolean
  * one to use by default in servicing the request.
  */
 const defaultBlockchainIdentifierByOrigin: {[origin: string]: string | number} = {
-  "http://localhost:3000": "http://localhost:8545",
+  "http://localhost:3000": 1313161555,
   "https://murmuration.goldfinch.finance": "https://murmuration.goldfinch.finance/_chain",
   "https://app.goldfinch.finance": 1,
 }
@@ -65,18 +65,19 @@ const overrideBlockchainIdentifier = (): string | number | undefined => {
  * @return {BaseProvider} The blockchain provider.
  */
 const _getBlockchain = (origin: string): BaseProvider => {
-  let blockchain = overrideBlockchainIdentifier() || defaultBlockchainIdentifierByOrigin[origin]
-  if (!blockchain) {
-    console.warn(`Failed to identify appropriate blockchain for request origin: ${origin}. Defaulting to mainnet.`)
-    blockchain = 1
-  }
-  const network = typeof blockchain === "number" ? getNetwork(blockchain) : blockchain
-  // If we're using urls for the network (hardhat or murmuration) use the default provider
-  if (typeof network === "string" && network.match(/^(ws|http)s?:/i)) {
-    return ethers.getDefaultProvider(network)
-  } else {
-    return new ethers.providers.InfuraProvider(network, INFURA_PROJECT_ID)
-  }
+  // let blockchain = overrideBlockchainIdentifier() || defaultBlockchainIdentifierByOrigin[origin]
+  // if (!blockchain) {
+  //   console.warn(`Failed to identify appropriate blockchain for request origin: ${origin}. Defaulting to mainnet.`)
+  //   blockchain = 1
+  // }
+  // const network = typeof blockchain === "number" ? getNetwork(blockchain) : blockchain
+  // // If we're using urls for the network (hardhat or murmuration) use the default provider
+  // if (typeof network === "string" && network.match(/^(ws|http)s?:/i)) {
+  //   return new ethers.providers.WebSocketProvider("wss://testnet.aurora.dev")
+  // } else {
+  //   return new ethers.providers.InfuraProvider(network, INFURA_PROJECT_ID)
+  // }
+  return new ethers.providers.WebSocketProvider("wss://testnet.aurora.dev")
 }
 
 /**

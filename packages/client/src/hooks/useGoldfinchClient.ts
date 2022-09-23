@@ -4,6 +4,7 @@ import {AuthenticatedSession, KnownSession} from "./useSignIn"
 const API_URLS = {
   mainnet: "https://us-central1-goldfinch-frontends-prod.cloudfunctions.net",
   localhost: "https://us-central1-goldfinch-frontends-dev.cloudfunctions.net",
+  aurora: "https://us-central1-free-artists-dev.cloudfunctions.net",
 }
 
 type OkResponse<T = any> = {
