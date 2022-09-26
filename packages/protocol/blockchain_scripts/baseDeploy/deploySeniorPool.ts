@@ -17,6 +17,7 @@ export async function deploySeniorPool(deployer: ContractDeployer, {config, fidu
   assertIsString(protocol_owner)
   assertIsString(gf_deployer)
   const accountant = await deployer.deployLibrary("Accountant", {from: gf_deployer, args: []})
+  await new Promise((r) => setTimeout(r, 4000))
   const seniorPool = await deployer.deploy<SeniorPool>(contractName, {
     from: gf_deployer,
     proxy: {
@@ -30,8 +31,11 @@ export async function deploySeniorPool(deployer: ContractDeployer, {config, fidu
     },
     libraries: {["Accountant"]: accountant.address},
   })
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "address", CONFIG_KEYS.SeniorPool, seniorPool.address, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await (await config.addToGoList(seniorPool.address)).wait()
+  await new Promise((r) => setTimeout(r, 4000))
   if (fidu) {
     logger(`Granting minter role to ${contractName}`)
     await grantMinterRoleToPool(fidu, seniorPool)

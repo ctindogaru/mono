@@ -28,6 +28,7 @@ export async function deployGFI(
       initialCap, //initialCap
     ],
   })
+  await new Promise((r) => setTimeout(r, 4000))
   const contract = await getTruffleContract<GFIInstance>(contractName, {at: gfi.address})
 
   const deployed: Deployed<GFIInstance> = {
@@ -36,6 +37,7 @@ export async function deployGFI(
   }
 
   await updateConfig(config, "address", CONFIG_KEYS.GFI, gfi.address, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
 
   return deployed
 }

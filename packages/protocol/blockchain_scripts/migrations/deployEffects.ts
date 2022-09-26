@@ -342,6 +342,7 @@ class IndividualTxEffects extends MultisendEffects {
       console.log(`Executing transaction ${i}...`)
       console.log(JSON.stringify(tx))
       await (await signer.sendTransaction({...tx, value: BigNumber.from(tx.value)})).wait()
+      await new Promise((r) => setTimeout(r, 4000))
       ++i
     }
   }

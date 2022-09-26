@@ -42,6 +42,7 @@ async function grantDistributorRoleToMerkleDistributor(
       await communityRewardsEthers.populateTransaction.grantRole(DISTRIBUTOR_ROLE, merkleDistributor.contract.address),
     ],
   })
+  await new Promise((r) => setTimeout(r, 4000))
 }
 
 export async function deployMerkleDistributor(
@@ -72,6 +73,7 @@ export async function deployMerkleDistributor(
     gasLimit: 4000000,
     args: [communityRewards.contract.address, merkleRoot],
   })
+  await new Promise((r) => setTimeout(r, 4000))
   const contract = await getTruffleContract<MerkleDistributorInstance>(contractName, {at: merkleDistributor.address})
 
   const deployed: Deployed<MerkleDistributorInstance> = {

@@ -23,8 +23,10 @@ export async function deployFidu(deployer: ContractDeployer, config: GoldfinchCo
       },
     },
   })
+  await new Promise((r) => setTimeout(r, 4000))
   const fiduAddress = fidu.address
 
   await updateConfig(config, "address", CONFIG_KEYS.Fidu, fiduAddress, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   return fidu
 }

@@ -32,6 +32,8 @@ export async function deployPoolTokens(deployer: ContractDeployer, {config}: Dep
       },
     },
   })
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "address", CONFIG_KEYS.PoolTokens, poolTokens.address, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   return poolTokens
 }

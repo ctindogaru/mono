@@ -59,6 +59,7 @@ export async function deployMerkleDirectDistributor(
       },
     },
   })
+  await new Promise((r) => setTimeout(r, 4000))
   const contract = await getTruffleContract<MerkleDirectDistributorInstance>(contractName, {
     at: merkleDirectDistributor.address,
   })

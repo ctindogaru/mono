@@ -38,6 +38,7 @@ export async function deployBackerRewards(
       },
     },
   })
+  await new Promise((r) => setTimeout(r, 4000))
 
   const contract = await getTruffleContract<BackerRewardsInstance>("BackerRewards", {at: backerRewards.address})
 
@@ -47,6 +48,7 @@ export async function deployBackerRewards(
   await deployEffects.add({
     deferred: [await goldfinchConfig.populateTransaction.setAddress(CONFIG_KEYS.BackerRewards, contract.address)],
   })
+  await new Promise((r) => setTimeout(r, 4000))
   logger("Updated BackerRewards config address to:", contract.address)
 
   return contract

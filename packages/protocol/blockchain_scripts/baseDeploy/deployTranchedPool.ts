@@ -19,14 +19,17 @@ export async function deployTranchedPool(
 
   assertIsString(gf_deployer)
   const tranchingLogic = await deployer.deployLibrary("TranchingLogic", {from: gf_deployer, args: []})
+  await new Promise((r) => setTimeout(r, 4000))
   const tranchedPoolImpl = await deployer.deploy(contractName, {
     from: gf_deployer,
     libraries: {["TranchingLogic"]: tranchingLogic.address},
   })
+  await new Promise((r) => setTimeout(r, 4000))
   logger("Updating config...")
   await deployEffects.add({
     deferred: [await config.populateTransaction.setTranchedPoolImplementation(tranchedPoolImpl.address)],
   })
+  await new Promise((r) => setTimeout(r, 4000))
   logger("Updated TranchedPoolImplementation config address to:", tranchedPoolImpl.address)
   return tranchedPoolImpl
 }

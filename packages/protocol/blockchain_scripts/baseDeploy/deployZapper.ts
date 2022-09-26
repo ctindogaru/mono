@@ -22,6 +22,7 @@ export async function deployZapper(deployer: ContractDeployer, {config}: DeployO
       },
     },
   })
+  await new Promise((r) => setTimeout(r, 4000))
 
   return zapper
 }

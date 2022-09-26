@@ -26,7 +26,9 @@ export async function deployPool(deployer: ContractDeployer, {config}: DeployOpt
       },
     },
   })
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "address", CONFIG_KEYS.Pool, pool.address, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
 
   return pool
 }

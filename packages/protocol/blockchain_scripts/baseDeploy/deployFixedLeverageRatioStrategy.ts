@@ -16,6 +16,7 @@ export async function deployFixedLeverageRatioStrategy(
   const strategy = await deployer.deploy<FixedLeverageRatioStrategy>(contractName, {
     from: gf_deployer,
   })
+  await new Promise((r) => setTimeout(r, 4000))
 
   // NOTE: THIS IS ONLY MEANT TO BE HERE BEFORE v2.6.0 HAS BEEN DEPLOYED
   // This is causing a failure because the above deploy will return
@@ -25,14 +26,17 @@ export async function deployFixedLeverageRatioStrategy(
   if (strategy.address !== "0x71cfF40A44051C6e6311413A728EE7633dDC901a") {
     const receipt = await strategy.initialize(protocol_owner, config.address)
     await receipt.wait()
+    await new Promise((r) => setTimeout(r, 4000))
   }
 
   if (deployEffects !== undefined) {
     deployEffects.add({
       deferred: [await config.populateTransaction.setSeniorPoolStrategy(strategy.address)],
     })
+    await new Promise((r) => setTimeout(r, 4000))
   } else {
     await (await config.setSeniorPoolStrategy(strategy.address)).wait()
+    await new Promise((r) => setTimeout(r, 4000))
   }
 
   return strategy

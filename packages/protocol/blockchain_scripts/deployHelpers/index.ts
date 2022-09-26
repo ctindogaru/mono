@@ -351,15 +351,23 @@ async function setInitialConfigVals(config: GoldfinchConfig, logger = function (
 
   logger("Updating the config vals...")
   await updateConfig(config, "number", CONFIG_KEYS.TransactionLimit, String(transactionLimit), {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "number", CONFIG_KEYS.TotalFundsLimit, String(totalFundsLimit), {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "number", CONFIG_KEYS.MaxUnderwriterLimit, String(maxUnderwriterLimit), {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "number", CONFIG_KEYS.ReserveDenominator, String(reserveDenominator), {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "number", CONFIG_KEYS.WithdrawFeeDenominator, String(withdrawFeeDenominator), {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "number", CONFIG_KEYS.LatenessGracePeriodInDays, String(latenessGracePeriodIndays), {
     logger,
   })
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "number", CONFIG_KEYS.LatenessMaxDays, String(latenessMaxDays), {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "number", CONFIG_KEYS.DrawdownPeriodInSeconds, String(drawdownPeriodInSeconds), {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(
     config,
     "number",
@@ -367,18 +375,25 @@ async function setInitialConfigVals(config: GoldfinchConfig, logger = function (
     String(transferPeriodRestrictionInDays),
     {logger}
   )
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "number", CONFIG_KEYS.LeverageRatio, String(leverageRatio), {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   // If we have a multisig safe, set that as the protocol admin, otherwise use the named account (local and test envs)
   const multisigAddress: AddressString = isSafeConfigChainId(chainId)
     ? SAFE_CONFIG[chainId].safeAddress
     : protocol_owner
   await updateConfig(config, "address", CONFIG_KEYS.ProtocolAdmin, multisigAddress, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "address", CONFIG_KEYS.OneInch, MAINNET_ONE_SPLIT_ADDRESS, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "address", CONFIG_KEYS.CUSDCContract, MAINNET_CUSDC_ADDRESS, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
   if (TRUSTED_FORWARDER_CONFIG[chainId]) {
     await updateConfig(config, "address", CONFIG_KEYS.TrustedForwarder, TRUSTED_FORWARDER_CONFIG[chainId], {logger})
+    await new Promise((r) => setTimeout(r, 4000))
   }
   await (await config.setTreasuryReserve(multisigAddress)).wait()
+  await new Promise((r) => setTimeout(r, 4000))
 }
 
 async function updateConfig(config: GoldfinchConfig, type: any, key: any, newValue: any, opts?: any) {

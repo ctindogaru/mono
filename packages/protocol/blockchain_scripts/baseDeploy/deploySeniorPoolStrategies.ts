@@ -16,6 +16,7 @@ export async function deploySeniorPoolStrategies(
 
   // We initialize the config's SeniorPoolStrategy to use the fixed strategy, not the dynamic strategy.
   await updateConfig(config, "address", CONFIG_KEYS.SeniorPoolStrategy, fixedLeverageRatioStrategy.address, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
 
   return [fixedLeverageRatioStrategy, dynamicLeverageRatioStrategy]
 }

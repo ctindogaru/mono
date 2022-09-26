@@ -60,6 +60,7 @@ const baseDeploy: DeployFunction = async function (hre: HardhatRuntimeEnvironmen
   const fidu = await deployFidu(deployer, config)
   await deployPoolTokens(deployer, {config})
   await deployTransferRestrictedVault(deployer, {config})
+  await new Promise((r) => setTimeout(r, 4000))
   const pool = await deployPool(deployer, {config})
   await deployTranchedPool(deployer, {config, deployEffects})
   logger("Granting minter role to Pool")
@@ -115,6 +116,7 @@ export async function grantOwnershipOfPoolToCreditDesk(pool: any, creditDeskAddr
   logger("Adding the Credit Desk as an owner")
   const txn = await pool.grantRole(OWNER_ROLE, creditDeskAddress)
   await txn.wait()
+  await new Promise((r) => setTimeout(r, 4000))
   const nowOwnedByCreditDesk = await pool.hasRole(OWNER_ROLE, creditDeskAddress)
   if (!nowOwnedByCreditDesk) {
     throw new Error(`Expected ${creditDeskAddress} to be an owner, but that is not the case`)
@@ -124,6 +126,7 @@ export async function grantOwnershipOfPoolToCreditDesk(pool: any, creditDeskAddr
 export async function grantMinterRoleToPool(fidu: Fidu, pool: any) {
   if (!(await fidu.hasRole(MINTER_ROLE, pool.address))) {
     await (await fidu.grantRole(MINTER_ROLE, pool.address)).wait()
+    await new Promise((r) => setTimeout(r, 4000))
   }
 }
 

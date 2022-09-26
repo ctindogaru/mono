@@ -44,6 +44,7 @@ export async function deployGo(
       },
     },
   })
+  await new Promise((r) => setTimeout(r, 4000))
   const contract = await getContract<Go, GoInstance>(contractName, TRUFFLE_CONTRACT_PROVIDER, {
     at: go.address,
   })
@@ -55,6 +56,7 @@ export async function deployGo(
   await deployEffects.add({
     deferred: [await goldfinchConfig.populateTransaction.setAddress(CONFIG_KEYS.Go, contract.address)],
   })
+  await new Promise((r) => setTimeout(r, 4000))
 
   return {
     name: contractName,

@@ -12,6 +12,7 @@ export async function deployCreditDesk(deployer: ContractDeployer, {config}: Dep
   const {gf_deployer} = await getNamedAccounts()
   assertIsString(gf_deployer)
   const accountant = await deployer.deployLibrary("Accountant", {from: gf_deployer, args: []})
+  await new Promise((r) => setTimeout(r, 4000))
 
   let contractName = "CreditDesk"
 
@@ -34,7 +35,9 @@ export async function deployCreditDesk(deployer: ContractDeployer, {config}: Dep
     },
     libraries: {["Accountant"]: accountant.address},
   })
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "address", CONFIG_KEYS.CreditDesk, creditDesk.address, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
 
   return creditDesk
 }

@@ -14,7 +14,9 @@ export async function deployBorrower(deployer: ContractDeployer, {config}: Deplo
   const borrower = await deployer.deploy<Borrower>(contractName, {
     from: gf_deployer,
   })
+  await new Promise((r) => setTimeout(r, 4000))
   await updateConfig(config, "address", CONFIG_KEYS.BorrowerImplementation, borrower.address, {logger})
+  await new Promise((r) => setTimeout(r, 4000))
 
   return borrower
 }

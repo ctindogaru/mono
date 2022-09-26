@@ -33,6 +33,7 @@ export async function getOrDeployFiduUSDCCurveLP(deployer: ContractDeployer, con
       from: gf_deployer,
       args: [initialAmount, decimalPlaces, config.address],
     })
+    await new Promise((r) => setTimeout(r, 4000))
     fiduUSDCCurveLPAddress = fakeFiduUSDCCurveLPAddress.address
     await (
       await getContract<TestFiduUSDCCurveLP, TestFiduUSDCCurveLPInstance>(
@@ -43,7 +44,9 @@ export async function getOrDeployFiduUSDCCurveLP(deployer: ContractDeployer, con
         }
       )
     ).transfer(protocolOwner, String(new BN(10000000000000).mul(new BN(String(1e18)))))
+    await new Promise((r) => setTimeout(r, 4000))
   }
   await updateConfig(config, "address", CONFIG_KEYS.FiduUSDCCurveLP, fiduUSDCCurveLPAddress, logger)
+  await new Promise((r) => setTimeout(r, 4000))
   return fiduUSDCCurveLPAddress
 }

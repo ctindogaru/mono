@@ -15,12 +15,15 @@ export async function deployConfig(deployer: ContractDeployer): Promise<Goldfinc
 
   assertIsString(gf_deployer)
   const config = await deployer.deploy<GoldfinchConfig>(contractName, {from: gf_deployer})
+  await new Promise((r) => setTimeout(r, 4000))
+
   const checkAddress = await config.getAddress(CONFIG_KEYS.TreasuryReserve)
   if (checkAddress === ZERO_ADDRESS) {
     logger("Config newly deployed, initializing...")
     const protocol_owner = await getProtocolOwner()
     assertIsString(protocol_owner)
     await (await config.initialize(protocol_owner)).wait()
+    await new Promise((r) => setTimeout(r, 4000))
   }
 
   await setInitialConfigVals(config, logger)

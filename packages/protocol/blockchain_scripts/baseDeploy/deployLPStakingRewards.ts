@@ -29,10 +29,12 @@ export async function deployLPStakingRewards(
       },
     },
   })
+  await new Promise((r) => setTimeout(r, 4000))
 
   await deployEffects.add({
     deferred: [await config.populateTransaction.setAddress(CONFIG_KEYS.StakingRewards, stakingRewards.address)],
   })
+  await new Promise((r) => setTimeout(r, 4000))
 
   return stakingRewards
 }

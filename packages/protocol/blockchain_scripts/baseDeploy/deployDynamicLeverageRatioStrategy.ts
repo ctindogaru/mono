@@ -14,6 +14,8 @@ export async function deployDynamicLeverageRatioStrategy(
   const strategy = await deployer.deploy<DynamicLeverageRatioStrategy>(contractName, {
     from: gf_deployer,
   })
+  await new Promise((r) => setTimeout(r, 4000))
   await (await strategy.initialize(protocol_owner)).wait()
+  await new Promise((r) => setTimeout(r, 4000))
   return strategy
 }

@@ -2,85 +2,85 @@
   "manifestVersion": "3.2",
   "proxies": [
     {
-      "address": "0xe31846d1cA95ab52Ca95d66E37c113fd6a652033",
-      "txHash": "0x66c65ad04f1cd1ff977582cdbe6f3521b7fc55ee07e9b32115be21b737249609",
+      "address": "0x19ED8Ee406F38e795686B68E8e5CB44CB1b3EE4a",
+      "txHash": "0x9dc213d16f5de2a28b769ad694ba739d51ba10e621ec0769c4e6e6e8c12216fd",
       "kind": "transparent"
     },
     {
-      "address": "0x6372C493a3FB08256E4d44F34fe65fFD6Dcc27E2",
-      "txHash": "0x803b3912d138697dcb92cdb5f3a2dad88551a9aeda00c91a8e24ba120a0d8203",
+      "address": "0x4B881Ed117bD9c296415Ed71Fe90D79E60cd5e4B",
+      "txHash": "0x69087a38a036785310bf459e8c08c918021795c9ca0420f7ff2db23b369daea8",
       "kind": "transparent"
     },
     {
-      "address": "0x7F266c1AD561bF5500895AD5Ea5515675ce51D3F",
-      "txHash": "0x004926cdb3e20e0bac1572ece991d30f8d02930e3a6fc69ecb683fe0ced121da",
+      "address": "0x13313AAa80E468F618C8195C4C5B5d90f7ba1EAc",
+      "txHash": "0x44976ec91ee12ace2036637c0a9cdc7dceaef3a998f7a7b81545b139f588e92e",
       "kind": "transparent"
     },
     {
-      "address": "0xf3b3b1A1885fd1698B79443D88Ec00d3FeE012E1",
-      "txHash": "0xbafd89351dcfa7d00d79af666b4bbdfde3dc934953c2498920ec6edf644d4c98",
+      "address": "0x4D79DC12C2237B51DFCe27C79d91AA4f9171B538",
+      "txHash": "0xe32785a34233b2a670b27add6eac83fb5e52254fe70052ef9bda3ee7471ce383",
       "kind": "transparent"
     },
     {
-      "address": "0x642bE282aB0d49177F52cA158F3eEBffb06dcAe6",
-      "txHash": "0xb99bb5183dc9bffc2ae801b1a8900b84fd731b60a88f63f19972f4b1e632ae3f",
+      "address": "0x267cC2D856f82Eae6C4758256142859cd55c590B",
+      "txHash": "0xfe6f1b9f4a8a014ac76528a5cc96e961958cfdefababfeffac8a0f026c11f909",
       "kind": "transparent"
     },
     {
-      "address": "0xB87b4FFFAe8a36bBBF5de2283DAD4B9A28026Bbc",
-      "txHash": "0x6526c4a70c2c1f85e0cea2c11778c47fb3421171673d70e0779d3d6e487ebb06",
+      "address": "0xe1ab1f88Ad7CFFc6cf3aDc686C2510bd7870712d",
+      "txHash": "0xf5d4b7c60eb9b0142a47e3c21592882aad146de83899133eedfa56f3d951eb6e",
       "kind": "transparent"
     },
     {
-      "address": "0xC367b9d768067e884CF73Db3b3c7B319dfCE0205",
-      "txHash": "0x42ebeefefe7b18c377e9bea73c5a7be52f72969d32f15e6a48ffa1f3b4f68688",
+      "address": "0xc2872Dc1AC3da8e8074685b86Fb80522182Ef564",
+      "txHash": "0x52de5c76f55ff639bae0fc2ff46a16bd099857e3bcf2bbdec9d4a78508d051fb",
       "kind": "transparent"
     },
     {
-      "address": "0xE932322F05aa724b374466bB33FDbfe87555326b",
-      "txHash": "0x1e51e7d77579814765798b28950f3342ce02b6f7ae28d48fe1e16a597eb311de",
+      "address": "0x1A3C9b6c29e7a870946946891E2C8148CFe1f558",
+      "txHash": "0x5530d5f997564d94592a42e81cc281050ee5447918cb37541c28d745c3d1dde2",
       "kind": "transparent"
     },
     {
-      "address": "0x0bA141B634BB686f3e7811775f93B4a88EB398Cd",
-      "txHash": "0x8f7ca59abd6d1255c1043bc956fea83a8a307ff48a6db13f7334f7a66f8e4d12",
+      "address": "0xD551458564545d20Ca25c7C6fbef0f36EaAA5Da2",
+      "txHash": "0x60538895dc6d703a09549e7503e858c062b3cf7a3aacf17bb0c432157298f69f",
       "kind": "transparent"
     },
     {
-      "address": "0x668aE84AD8d3508B897c6172256A5BD205b8d2b8",
-      "txHash": "0x45e5c1b028aef9106f5a29e3c530db437092393dc3363bf69c0af425d69a6cf6",
+      "address": "0x752777100a06d209D640035e210a11C64E91f916",
+      "txHash": "0xeb0c565dbb9431bb1021c139ffca6ad2e8a2561fac63d65b8a45595ce3ef2c8a",
       "kind": "transparent"
     },
     {
-      "address": "0xEcFeE7dE1BC2eC803889511bd552369FE2B32aC1",
-      "txHash": "0x2a18bbeed0775f5fde7c90b032290b7ae40c2e433a55659631b8ed8b1738ab2f",
+      "address": "0xA6482D80575AF126f8556E687AEdAAA5Cc8e5f13",
+      "txHash": "0x101b2ea878672c0b8b313e57cd07c3b8be7788af20c7402351f47cf5e2587208",
       "kind": "transparent"
     },
     {
-      "address": "0x7aE04724a1F7Bb0dE360a925Bca8f2026541FD79",
-      "txHash": "0xa074d8e4a8cd6529736e17c5c5b550bf156f8f36efb5e3de3ffc8f6e90919ef8",
+      "address": "0x9E020c7b9a8B971aBBab6F481a370CC77Ba83c65",
+      "txHash": "0x0bfaca5852f6441be475c78c9041c49e76e3489bdc153a032014b1e810a3b467",
       "kind": "transparent"
     },
     {
-      "address": "0x7D5cF3D15b62cbb98d2c4a685325CcD5a8643da7",
-      "txHash": "0xf589aedb0684385e57f31fb810c62089ceb6e7c9fd36048376649ba0e59990b7",
+      "address": "0x1fb8Ce8C0CfDE8504a141378D89b7978245Db46D",
+      "txHash": "0x3c5e42aa9e1b918014bf4b68ab968bd30a7f68c3f763d1e332fef439a4104640",
       "kind": "transparent"
     },
     {
-      "address": "0x1be4c55102000a60781Cf1a1B643e18E6e9BCA1F",
-      "txHash": "0x31bcae880e0aa47fb748cbeb0d0dbbc7bbc9baded815b278db543d36503eaa21",
+      "address": "0x09a4B7838D3F07aCb0B3C5bb47dAc96218Ed5CF5",
+      "txHash": "0x5ae11e984c75cf5964f4fa77c7e552a0ece87d47f6e6228e735ad6b695d033b4",
       "kind": "transparent"
     },
     {
-      "address": "0xD965AfDDb579C62A5efaD67775A8EE20FB16123B",
-      "txHash": "0x45fa146f3640b6af4dde5b31a6f54656fbac0a92c398aab8bc22374c6c5597f9",
+      "address": "0x31dd3A47e8bF4ec1527e310521A6919163ff6BD3",
+      "txHash": "0xcb78a2411362de1760a95a17ef0201daba5901478ddb19c6bbd3346377e4ab6b",
       "kind": "transparent"
     }
   ],
   "impls": {
     "4b873d2431626e7b8b7f25c801720314173fafdabde488a547130bb1da3f4c00": {
-      "address": "0x4c5872232cC394e82A5DF17108203A2387Bdc490",
-      "txHash": "0x87e39fc5f2439eba8906d80e9bf0496d280ea6d6864fc7309e420eac1b1a27d0",
+      "address": "0x5770Bbd147CBd6a925220DeAC203Ee49F687C974",
+      "txHash": "0xdf3e1fccdc550d13262880a29aaf3017d5b69308882366b02a062c62de63dfdb",
       "layout": {
         "storage": [
           {
@@ -194,12 +194,12 @@
           {
             "contract": "Fidu",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/core/Fidu.sol:21"
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_array(t_uint256)50_storage": {
@@ -283,8 +283,8 @@
       }
     },
     "56564fc6ff18a62c8509ace4ea7cebd77dc4b8801d6e4dfbf619ae0b8376cab2": {
-      "address": "0x739894D4bC2D7D7df759c0a020bC1f12e90Dc45E",
-      "txHash": "0xe197994dc16a6353fff95e80ff9ff89b39b751a911838d1fa21310282339ed41",
+      "address": "0x6713f153E816D0C8Ae5A4cC3f17490748DbD2198",
+      "txHash": "0xba3a84dd7cc16a2da9506b16c2c3e2b86ee3e3ea1472ab82bde00464aca9db20",
       "layout": {
         "storage": [
           {
@@ -422,7 +422,7 @@
           {
             "contract": "PoolTokens",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/core/PoolTokens.sol:19"
           },
           {
@@ -434,12 +434,12 @@
           {
             "contract": "PoolTokens",
             "label": "pools",
-            "type": "t_mapping(t_address,t_struct(PoolInfo)20112_storage)",
+            "type": "t_mapping(t_address,t_struct(PoolInfo)20088_storage)",
             "src": "contracts/protocol/core/PoolTokens.sol:31"
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_mapping(t_uint256,t_struct(TokenInfo)10238_storage)": {
@@ -476,10 +476,10 @@
           "t_address": {
             "label": "address"
           },
-          "t_mapping(t_address,t_struct(PoolInfo)20112_storage)": {
+          "t_mapping(t_address,t_struct(PoolInfo)20088_storage)": {
             "label": "mapping(address => struct PoolTokens.PoolInfo)"
           },
-          "t_struct(PoolInfo)20112_storage": {
+          "t_struct(PoolInfo)20088_storage": {
             "label": "struct PoolTokens.PoolInfo",
             "members": [
               {
@@ -639,8 +639,8 @@
       }
     },
     "576e96714aceba3f49693bea6316615bc91fa7d4f23f0db0a47626cf18e29cc5": {
-      "address": "0x9eB144Da56523bDf593e54AAfEbEE24C2489d22e",
-      "txHash": "0x51cdc4f094070e017177326f9b95bc1be8d9e004687acb4daf04e4fc40194dc0",
+      "address": "0xf06C3aE57f4350aB1ED3752008Da4A8c358365E1",
+      "txHash": "0xf6a22011ce04b03ea8d6f478b805b635544662e96b1a85be87be517138aa0c6e",
       "layout": {
         "storage": [
           {
@@ -790,33 +790,33 @@
           {
             "contract": "TransferRestrictedVault",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/periphery/TransferRestrictedVault.sol:28"
           },
           {
             "contract": "TransferRestrictedVault",
             "label": "poolTokenPositions",
-            "type": "t_mapping(t_uint256,t_struct(PoolTokenPosition)27862_storage)",
+            "type": "t_mapping(t_uint256,t_struct(PoolTokenPosition)27838_storage)",
             "src": "contracts/protocol/periphery/TransferRestrictedVault.sol:43"
           },
           {
             "contract": "TransferRestrictedVault",
             "label": "fiduPositions",
-            "type": "t_mapping(t_uint256,t_struct(FiduPosition)27867_storage)",
+            "type": "t_mapping(t_uint256,t_struct(FiduPosition)27843_storage)",
             "src": "contracts/protocol/periphery/TransferRestrictedVault.sol:45"
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
-          "t_mapping(t_uint256,t_struct(PoolTokenPosition)27862_storage)": {
+          "t_mapping(t_uint256,t_struct(PoolTokenPosition)27838_storage)": {
             "label": "mapping(uint256 => struct TransferRestrictedVault.PoolTokenPosition)"
           },
           "t_uint256": {
             "label": "uint256"
           },
-          "t_struct(PoolTokenPosition)27862_storage": {
+          "t_struct(PoolTokenPosition)27838_storage": {
             "label": "struct TransferRestrictedVault.PoolTokenPosition",
             "members": [
               {
@@ -829,10 +829,10 @@
               }
             ]
           },
-          "t_mapping(t_uint256,t_struct(FiduPosition)27867_storage)": {
+          "t_mapping(t_uint256,t_struct(FiduPosition)27843_storage)": {
             "label": "mapping(uint256 => struct TransferRestrictedVault.FiduPosition)"
           },
-          "t_struct(FiduPosition)27867_storage": {
+          "t_struct(FiduPosition)27843_storage": {
             "label": "struct TransferRestrictedVault.FiduPosition",
             "members": [
               {
@@ -991,8 +991,8 @@
       }
     },
     "b2b815dc93c70a6c323d2941b6c5dbe6a27c77e90e9d7d0de21a65e4b05a4831": {
-      "address": "0x77B37A15CB76d8d64653c5F41256DF76de6c0dDc",
-      "txHash": "0xbbfd5dfb244580f8ab2d6c230dc6a03cd3842e1804bce0d0e23678c01d6f76fb",
+      "address": "0x332C7969C14235ce63A7B1A2a17d6bFaD9E0d454",
+      "txHash": "0x45da78fd60b9cfab948101ae97fdbc348ecca82a8c1fc98b278adda5d9796d6d",
       "layout": {
         "storage": [
           {
@@ -1088,7 +1088,7 @@
           {
             "contract": "Pool",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/core/Pool.sol:17"
           },
           {
@@ -1099,7 +1099,7 @@
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_uint256": {
@@ -1164,9 +1164,9 @@
         }
       }
     },
-    "c6b7aa42ffd4b9769a49df836e6c4510a1d1f9a702157e031ee3830a040ce473": {
-      "address": "0x015fCfB9A7490c30C09d13295762b653F16d11Ef",
-      "txHash": "0xe5b13fd2e2dc20f7e9fd692c9e1d100535627d67cb6aa19fe5f18a2b76ce61cb",
+    "fa31866bf91e1a3c34a601492dd199fd7d7391f723522332016dd8397265e26f": {
+      "address": "0x93233584883C86EBB266E54A65183fF02873873E",
+      "txHash": "0x3c37c983fe73f2163ff74915bc10de6de2ac81e953cf278c8c3bd542f8c1cd6b",
       "layout": {
         "storage": [
           {
@@ -1268,7 +1268,7 @@
           {
             "contract": "CreditDesk",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/core/CreditDesk.sol:23"
           },
           {
@@ -1291,7 +1291,7 @@
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_mapping(t_address,t_struct(Underwriter)13028_storage)": {
@@ -1393,9 +1393,9 @@
         }
       }
     },
-    "3231a2b9c024f0714cf35ff1ed2e223d66583295716fa54f310132514ef4138e": {
-      "address": "0x23fd7CcED90bB544E55978e45AaAA2473bAC6cB9",
-      "txHash": "0x9bf8fd0f80f846006ba42d01f27b480260df3df2750e8aac77e348456534c744",
+    "03e3a070cb5fe64810fa68ece55080726b122d46e433a217b1b1d886c60f8fd2": {
+      "address": "0x3f38dfDF95569969600dAB3140e901580528fF11",
+      "txHash": "0x4e45e85a8c680549e5cfb0a30eb6bb78d1f0b4d1e4cb0bebdb4732512171c35c",
       "layout": {
         "storage": [
           {
@@ -1503,7 +1503,7 @@
           {
             "contract": "SeniorPool",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/core/SeniorPool.sol:22"
           },
           {
@@ -1520,7 +1520,7 @@
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_uint256": {
@@ -1592,8 +1592,8 @@
       }
     },
     "2a132555a31f8d77526933591abc33e530407f40bb2e0e93bc53f57685ea1b7c": {
-      "address": "0x586965DA8aaFd26aaBe6c64d4d57879c144c77c2",
-      "txHash": "0x58b6d9445d3a74f91853896fe9a6fed01aeb93daad544ae06910fb773174dd49",
+      "address": "0x80783A25E901A214E05B272C46153a426dF92f2B",
+      "txHash": "0xa474a21bff6ea68418321168e2be86ff72fbc5368afe749ede2df594ed8b59f7",
       "layout": {
         "storage": [
           {
@@ -1683,12 +1683,12 @@
           {
             "contract": "GoldfinchFactory",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/core/GoldfinchFactory.sol:20"
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_array(t_uint256)50_storage": {
@@ -1753,9 +1753,9 @@
         }
       }
     },
-    "e38ccc92cc160eabcdf1d0355aa95de2600435380aed448334b7ca86f751e5f0": {
-      "address": "0x67dd1fA4B1B23d26055D841bb7CFE7a4C350bcCA",
-      "txHash": "0xea331aea8169a6cc80c5c0032bf5991f6d34e2348ccf4c6fbcbc44e6740bc1de",
+    "0b2fe474811748d6a77a1dc203b70f1d340ffdcff2c0957379e2e510e97d68ce": {
+      "address": "0x7AbbBCE31978cffd573F8c0aB0453c90211907f4",
+      "txHash": "0x8bd25cecee3aa9d518e485fe958298464dfb9f71405e6e9ed5de1c2fee9c4c52",
       "layout": {
         "storage": [
           {
@@ -1905,7 +1905,7 @@
           {
             "contract": "StakingRewards",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/rewards/StakingRewards.sol:87"
           },
           {
@@ -1983,24 +1983,24 @@
           {
             "contract": "StakingRewards",
             "label": "leverageMultipliers",
-            "type": "t_mapping(t_enum(LockupPeriod)32571,t_uint256)",
+            "type": "t_mapping(t_enum(LockupPeriod)32547,t_uint256)",
             "src": "contracts/rewards/StakingRewards.sol:134"
           },
           {
             "contract": "StakingRewards",
             "label": "positions",
-            "type": "t_mapping(t_uint256,t_struct(StakedPosition)32589_storage)",
+            "type": "t_mapping(t_uint256,t_struct(StakedPosition)32565_storage)",
             "src": "contracts/rewards/StakingRewards.sol:137"
           },
           {
             "contract": "StakingRewards",
             "label": "effectiveMultipliers",
-            "type": "t_mapping(t_enum(StakedPositionType)32574,t_uint256)",
+            "type": "t_mapping(t_enum(StakedPositionType)32550,t_uint256)",
             "src": "contracts/rewards/StakingRewards.sol:141"
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_uint256": {
@@ -2009,10 +2009,10 @@
           "t_mapping(t_uint256,t_uint256)": {
             "label": "mapping(uint256 => uint256)"
           },
-          "t_mapping(t_enum(LockupPeriod)32571,t_uint256)": {
+          "t_mapping(t_enum(LockupPeriod)32547,t_uint256)": {
             "label": "mapping(enum StakingRewards.LockupPeriod => uint256)"
           },
-          "t_enum(LockupPeriod)32571": {
+          "t_enum(LockupPeriod)32547": {
             "label": "enum StakingRewards.LockupPeriod",
             "members": [
               "SixMonths",
@@ -2020,10 +2020,10 @@
               "TwentyFourMonths"
             ]
           },
-          "t_mapping(t_uint256,t_struct(StakedPosition)32589_storage)": {
+          "t_mapping(t_uint256,t_struct(StakedPosition)32565_storage)": {
             "label": "mapping(uint256 => struct StakingRewards.StakedPosition)"
           },
-          "t_struct(StakedPosition)32589_storage": {
+          "t_struct(StakedPosition)32565_storage": {
             "label": "struct StakingRewards.StakedPosition",
             "members": [
               {
@@ -2044,7 +2044,7 @@
               },
               {
                 "label": "positionType",
-                "type": "t_enum(StakedPositionType)32574"
+                "type": "t_enum(StakedPositionType)32550"
               },
               {
                 "label": "unsafeEffectiveMultiplier",
@@ -2085,14 +2085,14 @@
               }
             ]
           },
-          "t_enum(StakedPositionType)32574": {
+          "t_enum(StakedPositionType)32550": {
             "label": "enum StakingRewards.StakedPositionType",
             "members": [
               "Fidu",
               "CurveLP"
             ]
           },
-          "t_mapping(t_enum(StakedPositionType)32574,t_uint256)": {
+          "t_mapping(t_enum(StakedPositionType)32550,t_uint256)": {
             "label": "mapping(enum StakingRewards.StakedPositionType => uint256)"
           },
           "t_bool": {
@@ -2241,8 +2241,8 @@
       }
     },
     "d57f23e97608988f68b0180cd473f276f1d55a804a264b24d7ac06562d3ab346": {
-      "address": "0x1995B77799fEe6Ad22A848a6820c00DCb8Ace4bF",
-      "txHash": "0xa044312816e3c8cd0dc87be73cb65e9148ef91b520c97161152a49e8eb2c7714",
+      "address": "0xCbfA1f7f7a59c1580e7744d997761214522485f4",
+      "txHash": "0x0d7cc6d3390f358d991c391f66ea25d1a746bcc01bcf2df0155a81ecf0ce8d37",
       "layout": {
         "storage": [
           {
@@ -2392,7 +2392,7 @@
           {
             "contract": "CommunityRewards",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/rewards/CommunityRewards.sol:33"
           },
           {
@@ -2415,7 +2415,7 @@
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_uint256": {
@@ -2603,8 +2603,8 @@
       }
     },
     "5c0e1824808aec6e4f16ff9ed8f3086c7fc9b7e7e192f39197e9ca2b63e57380": {
-      "address": "0x824B287d03003cF156846355821709684803B39A",
-      "txHash": "0xbe225f8464566261ecfadd62f0377c123ab76ea5ec2cf0f7ade3db217c488c61",
+      "address": "0x84c54Af614B3c179325a76Bb8232f2B9CD857f6b",
+      "txHash": "0xc5d05c0dbcc95448f2d3470fbd191afc32d4e008da1cd90c2fc057dd5b3fdbf8",
       "layout": {
         "storage": [
           {
@@ -2780,8 +2780,8 @@
       }
     },
     "a5477a5839e6b7e5ea32c3e4448678bd1e0abb689b48ae84d2e9de4dc6df1510": {
-      "address": "0x4573747E6cbe19779F9B4C3520bcAD2aCB9EDc1D",
-      "txHash": "0x989f64ee3c95e55cd2449fc0e167a8e21fadbe9597acaef063ad99bcf0fd6841",
+      "address": "0x4503Ba424e992137feD95079B99C82C5Ed236286",
+      "txHash": "0x54ebd844d40ad95d3c3b3c9d963b1290198b3f0726d8f38d5d969032556493b2",
       "layout": {
         "storage": [
           {
@@ -2984,8 +2984,8 @@
       }
     },
     "68d43777ded85e394a5949485264cf31b27d24d744d9c4048ff5f5bb2c9ccb42": {
-      "address": "0x8e091D7973F1C8D5bF329c6E57e459d3AFc6ee8B",
-      "txHash": "0xae863ce76528b4d240481879900dbb41a9dff35b762493fffac5802db50005ec",
+      "address": "0xDa2F28a3a9318CFE3951d5DE9E3C83Ff1Ec5A945",
+      "txHash": "0xc5fbf34680d9afc55fd101f6c4c7102627747e62974e8c76844a9f2aa63ca275",
       "layout": {
         "storage": [
           {
@@ -3081,13 +3081,13 @@
           {
             "contract": "Go",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/core/Go.sol:20"
           },
           {
             "contract": "Go",
             "label": "legacyGoList",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/core/Go.sol:23"
           },
           {
@@ -3101,7 +3101,7 @@
           "t_address": {
             "label": "address"
           },
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_array(t_uint256)11_storage": {
@@ -3170,8 +3170,8 @@
       }
     },
     "af0ea0a45900b8be8be2a88ad38012b8d35616a91c13e0a725a8019cc54eccff": {
-      "address": "0x69b02F1a33B4912dC65CF05B6B5527084c381de1",
-      "txHash": "0x0fd503fa19b40a4ef846c62ecae400f2a46c0246f20cd611434ed0db77201809",
+      "address": "0xcd5cDb133c285711D7F398E16054954899A0936e",
+      "txHash": "0x878bbfe52e8bb800fe5a8179fd8384ca4c73aa824f40196611326f0bf35f759d",
       "layout": {
         "storage": [
           {
@@ -3261,7 +3261,7 @@
           {
             "contract": "BackerRewards",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/rewards/BackerRewards.sol:35"
           },
           {
@@ -3291,39 +3291,39 @@
           {
             "contract": "BackerRewards",
             "label": "tokens",
-            "type": "t_mapping(t_uint256,t_struct(BackerRewardsTokenInfo)29425_storage)",
+            "type": "t_mapping(t_uint256,t_struct(BackerRewardsTokenInfo)29401_storage)",
             "src": "contracts/rewards/BackerRewards.sol:121"
           },
           {
             "contract": "BackerRewards",
             "label": "pools",
-            "type": "t_mapping(t_address,t_struct(BackerRewardsInfo)29420_storage)",
+            "type": "t_mapping(t_address,t_struct(BackerRewardsInfo)29396_storage)",
             "src": "contracts/rewards/BackerRewards.sol:124"
           },
           {
             "contract": "BackerRewards",
             "label": "poolStakingRewards",
-            "type": "t_mapping(t_contract(ITranchedPool)10674,t_struct(StakingRewardsPoolInfo)29433_storage)",
+            "type": "t_mapping(t_contract(ITranchedPool)10674,t_struct(StakingRewardsPoolInfo)29409_storage)",
             "src": "contracts/rewards/BackerRewards.sol:127"
           },
           {
             "contract": "BackerRewards",
             "label": "tokenStakingRewards",
-            "type": "t_mapping(t_uint256,t_struct(StakingRewardsTokenInfo)29447_storage)",
+            "type": "t_mapping(t_uint256,t_struct(StakingRewardsTokenInfo)29423_storage)",
             "src": "contracts/rewards/BackerRewards.sol:130"
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
           "t_uint256": {
             "label": "uint256"
           },
-          "t_mapping(t_uint256,t_struct(BackerRewardsTokenInfo)29425_storage)": {
+          "t_mapping(t_uint256,t_struct(BackerRewardsTokenInfo)29401_storage)": {
             "label": "mapping(uint256 => struct BackerRewards.BackerRewardsTokenInfo)"
           },
-          "t_struct(BackerRewardsTokenInfo)29425_storage": {
+          "t_struct(BackerRewardsTokenInfo)29401_storage": {
             "label": "struct BackerRewards.BackerRewardsTokenInfo",
             "members": [
               {
@@ -3336,13 +3336,13 @@
               }
             ]
           },
-          "t_mapping(t_address,t_struct(BackerRewardsInfo)29420_storage)": {
+          "t_mapping(t_address,t_struct(BackerRewardsInfo)29396_storage)": {
             "label": "mapping(address => struct BackerRewards.BackerRewardsInfo)"
           },
           "t_address": {
             "label": "address"
           },
-          "t_struct(BackerRewardsInfo)29420_storage": {
+          "t_struct(BackerRewardsInfo)29396_storage": {
             "label": "struct BackerRewards.BackerRewardsInfo",
             "members": [
               {
@@ -3351,13 +3351,13 @@
               }
             ]
           },
-          "t_mapping(t_contract(ITranchedPool)10674,t_struct(StakingRewardsPoolInfo)29433_storage)": {
+          "t_mapping(t_contract(ITranchedPool)10674,t_struct(StakingRewardsPoolInfo)29409_storage)": {
             "label": "mapping(contract ITranchedPool => struct BackerRewards.StakingRewardsPoolInfo)"
           },
           "t_contract(ITranchedPool)10674": {
             "label": "contract ITranchedPool"
           },
-          "t_struct(StakingRewardsPoolInfo)29433_storage": {
+          "t_struct(StakingRewardsPoolInfo)29409_storage": {
             "label": "struct BackerRewards.StakingRewardsPoolInfo",
             "members": [
               {
@@ -3370,14 +3370,14 @@
               },
               {
                 "label": "slicesInfo",
-                "type": "t_array(t_struct(StakingRewardsSliceInfo)29444_storage)dyn_storage"
+                "type": "t_array(t_struct(StakingRewardsSliceInfo)29420_storage)dyn_storage"
               }
             ]
           },
-          "t_array(t_struct(StakingRewardsSliceInfo)29444_storage)dyn_storage": {
+          "t_array(t_struct(StakingRewardsSliceInfo)29420_storage)dyn_storage": {
             "label": "struct BackerRewards.StakingRewardsSliceInfo[]"
           },
-          "t_struct(StakingRewardsSliceInfo)29444_storage": {
+          "t_struct(StakingRewardsSliceInfo)29420_storage": {
             "label": "struct BackerRewards.StakingRewardsSliceInfo",
             "members": [
               {
@@ -3402,10 +3402,10 @@
               }
             ]
           },
-          "t_mapping(t_uint256,t_struct(StakingRewardsTokenInfo)29447_storage)": {
+          "t_mapping(t_uint256,t_struct(StakingRewardsTokenInfo)29423_storage)": {
             "label": "mapping(uint256 => struct BackerRewards.StakingRewardsTokenInfo)"
           },
-          "t_struct(StakingRewardsTokenInfo)29447_storage": {
+          "t_struct(StakingRewardsTokenInfo)29423_storage": {
             "label": "struct BackerRewards.StakingRewardsTokenInfo",
             "members": [
               {
@@ -3474,8 +3474,8 @@
       }
     },
     "77bb60df5464b6ddc6ed1b8f105fc37478238795643b4f4b081c894e53f04516": {
-      "address": "0x6275dA32e179A0Bd67bfbaCE8991BB0b33d9F0cE",
-      "txHash": "0x2e6f5bdd81f4a1f436df01332a3b224f94e3804a2a3d693c915d49847731e9ef",
+      "address": "0xf8f7e825d197bE7E5e72259A47d8DcE85656574a",
+      "txHash": "0x032afecb4544e2ff9afaa1054a3f196a477f662a68cf5fe8e5701cce02fcdab9",
       "layout": {
         "storage": [
           {
@@ -3565,27 +3565,27 @@
           {
             "contract": "Zapper",
             "label": "config",
-            "type": "t_contract(GoldfinchConfig)17615",
+            "type": "t_contract(GoldfinchConfig)17591",
             "src": "contracts/protocol/core/Zapper.sol:22"
           },
           {
             "contract": "Zapper",
             "label": "tranchedPoolZaps",
-            "type": "t_mapping(t_uint256,t_struct(Zap)26269_storage)",
+            "type": "t_mapping(t_uint256,t_struct(Zap)26245_storage)",
             "src": "contracts/protocol/core/Zapper.sol:32"
           }
         ],
         "types": {
-          "t_contract(GoldfinchConfig)17615": {
+          "t_contract(GoldfinchConfig)17591": {
             "label": "contract GoldfinchConfig"
           },
-          "t_mapping(t_uint256,t_struct(Zap)26269_storage)": {
+          "t_mapping(t_uint256,t_struct(Zap)26245_storage)": {
             "label": "mapping(uint256 => struct Zapper.Zap)"
           },
           "t_uint256": {
             "label": "uint256"
           },
-          "t_struct(Zap)26269_storage": {
+          "t_struct(Zap)26245_storage": {
             "label": "struct Zapper.Zap",
             "members": [
               {

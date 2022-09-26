@@ -44,6 +44,7 @@ export async function deployUniqueIdentity({
       },
     },
   })
+  await new Promise((r) => setTimeout(r, 4000))
   const truffleContract = await getContract<
     UniqueIdentity | TestUniqueIdentity,
     UniqueIdentityInstance | TestUniqueIdentityInstance
@@ -53,6 +54,7 @@ export async function deployUniqueIdentity({
   await deployEffects.add({
     deferred: [await ethersContract.populateTransaction.grantRole(SIGNER_ROLE, trustedSigner)],
   })
+  await new Promise((r) => setTimeout(r, 4000))
 
   return {
     name: contractName,
